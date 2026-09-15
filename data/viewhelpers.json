@@ -1,0 +1,3758 @@
+{
+  "version": "14.3",
+  "source": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Index.html",
+  "license": "CC-BY-4.0",
+  "attribution": "TYPO3 contributors; descriptions shortened and value suggestions added.",
+  "viewhelpers": {
+    "f:alias": {
+      "description": "Declares new variables which are aliases of other variables. Takes a \"map\"-Parameter which is an associative array which defines the shorthand mapping.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Alias.html",
+      "arguments": {
+        "map": {
+          "type": "array",
+          "required": true,
+          "description": "Array that specifies which variables should be mapped to which alias"
+        }
+      }
+    },
+    "f:argument": {
+      "description": "f:argument allows to define requirements and type constraints to variables that are provided to templates and partials. This can be very helpful to document how a template or partial is supposed to be used and which input variables are required.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Argument.html",
+      "arguments": {
+        "default": {
+          "type": "mixed",
+          "required": false,
+          "description": "default value for optional argument"
+        },
+        "description": {
+          "type": "string",
+          "required": false,
+          "description": "description of the template argument"
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "description": "name of the template argument"
+        },
+        "optional": {
+          "type": "boolean",
+          "required": false,
+          "description": "true if the defined argument should be optional",
+          "default": "false"
+        },
+        "type": {
+          "type": "string",
+          "required": true,
+          "description": "type of the template argument"
+        }
+      }
+    },
+    "f:asset.css": {
+      "description": "ViewHelper to add CSS to the TYPO3 AssetCollector. Either a file or inline CSS can be added.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Asset/Css.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "csp": {
+          "type": "bool",
+          "required": false,
+          "description": "Whether to collect a CSP hash value for this asset (default: true for external files, false for inline)"
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "disabled": {
+          "type": "bool",
+          "required": false,
+          "description": "Define whether or not the described stylesheet should be loaded and applied to the document."
+        },
+        "identifier": {
+          "type": "string",
+          "required": true,
+          "description": "Use this identifier within templates to only inject your CSS once, even though it is added multiple times."
+        },
+        "inline": {
+          "type": "bool",
+          "required": false,
+          "description": "Define whether or not the referenced file should be loaded as inline styles (Only to be used if 'href' is set).",
+          "default": "false"
+        },
+        "priority": {
+          "type": "boolean",
+          "required": false,
+          "description": "Define whether the CSS should be included before other CSS. CSS will always be output in the <head> tag.",
+          "default": "false"
+        },
+        "useNonce": {
+          "type": "bool",
+          "required": false,
+          "description": "Whether to use the global nonce value (deprecated, use csp instead)"
+        }
+      }
+    },
+    "f:asset.module": {
+      "description": "ViewHelper to add JavaScript modules to the TYPO3 AssetCollector.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Asset/Module.html",
+      "arguments": {
+        "identifier": {
+          "type": "string",
+          "required": true,
+          "description": "Bare module identifier like \"@my/package/filename.js\"."
+        }
+      }
+    },
+    "f:asset.script": {
+      "description": "ViewHelper to add JavaScript to the TYPO3 AssetCollector. Either a file or inline JavaScript can be added.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Asset/Script.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "async": {
+          "type": "bool",
+          "required": false,
+          "description": "Define that the script will be fetched in parallel to parsing and evaluation."
+        },
+        "csp": {
+          "type": "bool",
+          "required": false,
+          "description": "Whether to collect a CSP hash value for this asset (default: true for external files, false for inline)"
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "defer": {
+          "type": "bool",
+          "required": false,
+          "description": "Define that the script is meant to be executed after the document has been parsed."
+        },
+        "identifier": {
+          "type": "string",
+          "required": true,
+          "description": "Use this identifier within templates to only inject your JS once, even though it is added multiple times."
+        },
+        "inline": {
+          "type": "bool",
+          "required": false,
+          "description": "Define whether or not the referenced file should be loaded as inline script (Only to be used if 'src' is set).",
+          "default": "false"
+        },
+        "nomodule": {
+          "type": "bool",
+          "required": false,
+          "description": "Define that the script should not be executed in browsers that support ES2015 modules."
+        },
+        "priority": {
+          "type": "boolean",
+          "required": false,
+          "description": "Define whether the JavaScript should be put in the <head> tag above-the-fold or somewhere in the body part.",
+          "default": "false"
+        },
+        "useNonce": {
+          "type": "bool",
+          "required": false,
+          "description": "Whether to use the global nonce value (deprecated, use csp instead)"
+        }
+      }
+    },
+    "f:asset.styleAttr": {
+      "description": "ViewHelper for inline style attributes that need CSP hash coverage via style-src-attr.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Asset/StyleAttr.html",
+      "arguments": {
+        "csp": {
+          "type": "bool",
+          "required": false,
+          "description": "Whether to collect a CSP hash for this style value",
+          "default": "true"
+        },
+        "value": {
+          "type": "string",
+          "required": true,
+          "description": "The inline style value (e.g. \"color: green; text-decoration: underline;\")"
+        }
+      }
+    },
+    "f:be.infobox": {
+      "description": "ViewHelper for rendering a styled content infobox markup.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Be/Infobox.html",
+      "arguments": {
+        "disableIcon": {
+          "type": "bool",
+          "required": false,
+          "description": "If set to TRUE, the icon is not rendered.",
+          "default": "false"
+        },
+        "iconName": {
+          "type": "string",
+          "required": false,
+          "description": "Identifier of the icon as registered in the Icon Registry. NULL sets default icon"
+        },
+        "message": {
+          "type": "string",
+          "required": false,
+          "description": "The message of the info box, if NULL tag content is used"
+        },
+        "state": {
+          "type": "mixed",
+          "required": false,
+          "description": "The state of the box, accepts ContextualFeedbackSeverity enum or integer value",
+          "default": "-2"
+        },
+        "title": {
+          "type": "string",
+          "required": false,
+          "description": "The title of the info box"
+        }
+      }
+    },
+    "f:be.link": {
+      "description": "ViewHelper for creating URIs to backend modules.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Be/Link.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "parameters": {
+          "type": "array",
+          "required": false,
+          "description": "An array of parameters",
+          "default": "array ( )"
+        },
+        "referenceType": {
+          "type": "string",
+          "required": false,
+          "description": "The type of reference to be generated (one of the constants)",
+          "default": "'absolute'"
+        },
+        "route": {
+          "type": "string",
+          "required": true,
+          "description": "The name of the route"
+        }
+      }
+    },
+    "f:be.menus.actionMenu": {
+      "description": "ViewHelper which returns a select box that can be used to switch between multiple actions and controllers and looks similar to TYPO3s \"funcMenu\".",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Be/Menus/ActionMenu.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "defaultController": {
+          "type": "string",
+          "required": false,
+          "description": "The default controller to be used"
+        }
+      }
+    },
+    "f:be.menus.actionMenuItem": {
+      "description": "ViewHelper which returns an option tag within a <f:be.menus.actionMenu> group.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Be/Menus/ActionMenuItem.html",
+      "arguments": {
+        "action": {
+          "type": "string",
+          "required": true,
+          "description": "the action to be associated with this ActionMenuItem"
+        },
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "arguments": {
+          "type": "array",
+          "required": false,
+          "description": "additional controller arguments to be passed to the action when this ActionMenuItem is selected",
+          "default": "array ( )"
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "controller": {
+          "type": "string",
+          "required": true,
+          "description": "controller to be associated with this ActionMenuItem"
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "label": {
+          "type": "string",
+          "required": true,
+          "description": "label of the option tag"
+        }
+      }
+    },
+    "f:be.menus.actionMenuItemGroup": {
+      "description": "ViewHelper which groups options within a <f:be.menus.actionMenu> group.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Be/Menus/ActionMenuItemGroup.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "defaultController": {
+          "type": "string",
+          "required": false,
+          "description": "Unused"
+        },
+        "label": {
+          "type": "string",
+          "required": false,
+          "description": "The label of the option group",
+          "default": "''"
+        }
+      }
+    },
+    "f:be.pageInfo": {
+      "description": "ViewHelper which returns the page info icon as known from TYPO3 backend modules.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Be/PageInfo.html",
+      "arguments": {}
+    },
+    "f:be.pagePath": {
+      "description": "ViewHelper which returns the current page path as known from TYPO3 backend modules.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Be/PagePath.html",
+      "arguments": {}
+    },
+    "f:be.pageRenderer": {
+      "description": "ViewHelper to register backend module resources like CSS and JavaScript using the PageRenderer.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Be/PageRenderer.html",
+      "arguments": {
+        "addInlineSettings": {
+          "type": "array",
+          "required": false,
+          "description": "Adds Javascript Inline Setting"
+        },
+        "addJsInlineLabels": {
+          "type": "array",
+          "required": false,
+          "description": "Custom labels to add to JavaScript inline labels"
+        },
+        "includeCssFiles": {
+          "type": "array",
+          "required": false,
+          "description": "List of custom CSS file to be loaded"
+        },
+        "includeJavaScriptModules": {
+          "type": "array",
+          "required": false,
+          "description": "List of JavaScript modules to be loaded"
+        },
+        "includeJsFiles": {
+          "type": "array",
+          "required": false,
+          "description": "List of custom JavaScript file to be loaded"
+        },
+        "pageTitle": {
+          "type": "string",
+          "required": false,
+          "description": "title tag of the module. Not required by default, as BE modules are shown in a frame",
+          "default": "''"
+        }
+      }
+    },
+    "f:be.security.ifAuthenticated": {
+      "description": "ViewHelper implementing an ifAuthenticated/else condition for backend users and backend groups.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Be/Security/IfAuthenticated.html",
+      "arguments": {
+        "else": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if not met."
+        },
+        "then": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if met."
+        }
+      }
+    },
+    "f:be.security.ifHasRole": {
+      "description": "ViewHelper implementing an ifHasRole/else condition for backend users and backend groups (\"Role\").",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Be/Security/IfHasRole.html",
+      "arguments": {
+        "else": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if not met."
+        },
+        "role": {
+          "type": "string",
+          "required": false,
+          "description": "The usergroup (either the usergroup uid or its title)."
+        },
+        "then": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if met."
+        }
+      }
+    },
+    "f:be.tableList": {
+      "description": "ViewHelper which renders a record list as known from the TYPO3 records module.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Be/TableList.html",
+      "arguments": {
+        "clickTitleMode": {
+          "type": "string",
+          "required": false,
+          "description": "one of \"edit\", \"show\" (only pages, tt_content), \"info",
+          "default": "''"
+        },
+        "enableClickMenu": {
+          "type": "bool",
+          "required": false,
+          "description": "enables context menu",
+          "default": "true"
+        },
+        "enableControlPanels": {
+          "type": "bool",
+          "required": false,
+          "description": "enables control panels",
+          "default": "false"
+        },
+        "fieldList": {
+          "type": "array",
+          "required": false,
+          "description": "list of fields to be displayed. If empty, only the title column (configured in $TCA[$tableName]['ctrl']['title']) is shown",
+          "default": "array ( )"
+        },
+        "filter": {
+          "type": "string",
+          "required": false,
+          "description": "corresponds to the \"Search String\" textbox of the TYPO3 records module. If not empty, only records matching the string will be fetched",
+          "default": "''"
+        },
+        "levels": {
+          "type": "int",
+          "required": false,
+          "description": "corresponds to the level selector of the TYPO3 records module. By default only records from the current storagePid are fetched",
+          "default": "0"
+        },
+        "readOnly": {
+          "type": "bool",
+          "required": false,
+          "description": "if TRUE, the edit icons won't be shown. Otherwise edit icons will be shown, if the current BE user has edit rights for the specified table!",
+          "default": "false"
+        },
+        "recordsPerPage": {
+          "type": "int",
+          "required": false,
+          "description": "amount of records to be displayed at once. Defaults to 100",
+          "default": "0"
+        },
+        "sortDescending": {
+          "type": "bool",
+          "required": false,
+          "description": "if TRUE records will be sorted in descending order",
+          "default": "false"
+        },
+        "sortField": {
+          "type": "string",
+          "required": false,
+          "description": "table field to sort the results by",
+          "default": "''"
+        },
+        "storagePid": {
+          "type": "int",
+          "required": false,
+          "description": "by default, records are fetched from the storage PID configured in persistence.storagePid. With this argument, the storage PID can be overwritten"
+        },
+        "tableName": {
+          "type": "string",
+          "required": true,
+          "description": "name of the database table"
+        }
+      }
+    },
+    "f:be.uri": {
+      "description": "ViewHelper for creating URIs to backend modules.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Be/Uri.html",
+      "arguments": {
+        "parameters": {
+          "type": "array",
+          "required": false,
+          "description": "An array of parameters",
+          "default": "array ( )"
+        },
+        "referenceType": {
+          "type": "string",
+          "required": false,
+          "description": "The type of reference to be generated (one of the constants)",
+          "default": "'absolute'"
+        },
+        "route": {
+          "type": "string",
+          "required": true,
+          "description": "The name of the route"
+        }
+      }
+    },
+    "f:cache.disable": {
+      "description": "ViewHelper to disable template compiling",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Cache/Disable.html",
+      "arguments": {}
+    },
+    "f:cache.static": {
+      "description": "ViewHelper to force compiling to a static string",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Cache/Static.html",
+      "arguments": {}
+    },
+    "f:case": {
+      "description": "Case ViewHelper that is only usable within the f:switch ViewHelper.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Case.html",
+      "arguments": {
+        "value": {
+          "type": "mixed",
+          "required": true,
+          "description": "Value to match in this case"
+        }
+      }
+    },
+    "f:ceil": {
+      "description": "The CeilViewHelper rounds up a float value to the next integer. The ViewHelper mimics PHP's ceil() function.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Ceil.html",
+      "arguments": {
+        "value": {
+          "type": "float",
+          "required": false,
+          "description": "The number that should be rounded up"
+        }
+      }
+    },
+    "f:cObject": {
+      "description": "ViewHelper to render CObjects (objects containing rendering definitions for records/elements), using the global TypoScript configuration.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/CObject.html",
+      "arguments": {
+        "currentValueKey": {
+          "type": "string",
+          "required": false,
+          "description": "currentValueKey"
+        },
+        "data": {
+          "type": "mixed",
+          "required": false,
+          "description": "the data to be used for rendering the cObject. Can be an object, array or string. If this argument is not set, child nodes will be used"
+        },
+        "table": {
+          "type": "string",
+          "required": false,
+          "description": "the table name associated with \"data\" argument. Typically tt_content or one of your custom tables. This argument should be set if rendering a FILES cObject where file references are used, or if the data argument is a database record.",
+          "default": "''"
+        },
+        "typoscriptObjectPath": {
+          "type": "string",
+          "required": true,
+          "description": "the TypoScript setup path of the TypoScript object to render"
+        }
+      }
+    },
+    "f:comment": {
+      "description": "This ViewHelper prevents rendering of any content inside the tag.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Comment.html",
+      "arguments": {}
+    },
+    "f:constant": {
+      "description": "Wrapper for PHPs constant function. See https://www.php.net/manual/function.constant.php.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Constant.html",
+      "arguments": {
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "String representation of a PHP constant or enum"
+        }
+      }
+    },
+    "f:contains": {
+      "description": "The ContainsViewHelper checks if a provided string or array contains the specified value. Depending on the input, this mimicks PHP's in_array() or str_contains() .",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Contains.html",
+      "arguments": {
+        "else": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if not met."
+        },
+        "subject": {
+          "type": "mixed",
+          "required": true,
+          "description": "The string or array that might contain the value (haystack)"
+        },
+        "then": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if met."
+        },
+        "value": {
+          "type": "mixed",
+          "required": true,
+          "description": "The value to check for (needle)"
+        }
+      }
+    },
+    "f:count": {
+      "description": "This ViewHelper counts elements of the specified array or countable object.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Count.html",
+      "arguments": {
+        "subject": {
+          "type": "array",
+          "required": false,
+          "description": "Countable subject, array or \\Countable"
+        }
+      }
+    },
+    "f:cycle": {
+      "description": "This ViewHelper cycles through the specified values. This can be often used to specify CSS classes for example.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Cycle.html",
+      "arguments": {
+        "as": {
+          "type": "string",
+          "required": true,
+          "description": "The name of the iteration variable"
+        },
+        "values": {
+          "type": "array",
+          "required": false,
+          "description": "The array or object implementing \\ArrayAccess (for example \\SplObjectStorage) to iterated over"
+        }
+      }
+    },
+    "f:debug": {
+      "description": "ViewHelper to generate an HTML readable dump of variables or objects. The output can be navigated like a nested tree. The output will be put at the beginning of the HTML response, unless the inline attribute is set, so that the output will be placed at the specific place where it is placed inside a Fluid template.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Debug.html",
+      "arguments": {
+        "ansiColors": {
+          "type": "bool",
+          "required": false,
+          "description": "If TRUE, ANSI color codes is added to the plaintext output, if FALSE (default) the plaintext debug output not colored.",
+          "default": "false"
+        },
+        "blacklistedClassNames": {
+          "type": "array",
+          "required": false,
+          "description": "An array of class names (RegEx) to be filtered. Default is an array of some common class names."
+        },
+        "blacklistedPropertyNames": {
+          "type": "array",
+          "required": false,
+          "description": "An array of property names and/or array keys (RegEx) to be filtered. Default is an array of some common property names."
+        },
+        "inline": {
+          "type": "bool",
+          "required": false,
+          "description": "if TRUE, the dump is rendered at the position of the <f:debug> tag. If FALSE (default), the dump is displayed at the top of the page.",
+          "default": "false"
+        },
+        "maxDepth": {
+          "type": "int",
+          "required": false,
+          "description": "Sets the max recursion depth of the dump (defaults to 8). De- or increase the number according to your needs and memory limit.",
+          "default": "8"
+        },
+        "plainText": {
+          "type": "bool",
+          "required": false,
+          "description": "If TRUE, the dump is in plain text, if FALSE the debug output is in HTML format.",
+          "default": "false"
+        },
+        "title": {
+          "type": "string",
+          "required": false,
+          "description": "optional custom title for the debug output"
+        }
+      }
+    },
+    "f:debug.render": {
+      "description": "ViewHelper for a debuggable version of <f:render>. Performs the same rendering operation, but wraps the output with HTML that can be inspected with the admin panel in the frontend.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Debug/Render.html",
+      "arguments": {
+        "arguments": {
+          "type": "array",
+          "required": false,
+          "description": "Array of variables to be transferred. Use {_all} for all variables",
+          "default": "array ( )"
+        },
+        "contentAs": {
+          "type": "string",
+          "required": false,
+          "description": "If used, renders the child content and adds it as a template variable with this name for use in the partial/section"
+        },
+        "debug": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the admin panel shows debug information if activated,",
+          "default": "true"
+        },
+        "default": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value (usually string) to be displayed if the section or partial does not exist"
+        },
+        "optional": {
+          "type": "boolean",
+          "required": false,
+          "description": "If TRUE, considers the *section* optional. Partial never is.",
+          "default": "false"
+        },
+        "partial": {
+          "type": "string",
+          "required": false,
+          "description": "Partial to render, with or without section"
+        },
+        "section": {
+          "type": "string",
+          "required": false,
+          "description": "Section to render - combine with partial to render section in partial"
+        }
+      }
+    },
+    "f:defaultCase": {
+      "description": "A ViewHelper which specifies the \"default\" case when used within the f:switch ViewHelper.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/DefaultCase.html",
+      "arguments": {}
+    },
+    "f:else": {
+      "description": "Else-Branch of a condition. Only has an effect inside of f:if. See the f:if ViewHelper for documentation.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Else.html",
+      "arguments": {
+        "if": {
+          "type": "boolean",
+          "required": false,
+          "description": "Condition expression conforming to Fluid boolean rules"
+        }
+      }
+    },
+    "f:endsWith": {
+      "description": "EndsWith ViewHelper checks if the subject string ends with a specified string. This ViewHelper implements an if/else condition.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/EndsWith.html",
+      "arguments": {
+        "else": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if not met."
+        },
+        "search": {
+          "type": "string",
+          "required": true,
+          "description": "String to search in subject at the beginning"
+        },
+        "subject": {
+          "type": "string",
+          "required": true,
+          "description": "String to search in"
+        },
+        "then": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if met."
+        }
+      }
+    },
+    "f:feature": {
+      "description": "ViewHelper to check if a feature flag is enabled, implemented as a condition like an \"if\" construct.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Feature.html",
+      "arguments": {
+        "else": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if not met."
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "description": "name of the feature flag that should be checked"
+        },
+        "then": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if met."
+        }
+      }
+    },
+    "f:first": {
+      "description": "The FirstViewHelper returns the first item of an array.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/First.html",
+      "arguments": {
+        "value": {
+          "type": "array",
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "f:flashMessages": {
+      "description": "This ViewHelper renders the Flash messages (if there are any) as an unsorted list.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/FlashMessages.html",
+      "arguments": {
+        "as": {
+          "type": "string",
+          "required": false,
+          "description": "The name of the current flashMessage variable for rendering inside"
+        },
+        "queueIdentifier": {
+          "type": "string",
+          "required": false,
+          "description": "Flash-message queue to use"
+        }
+      }
+    },
+    "f:flatten": {
+      "description": "The FlattenViewHelper flattens a multi-dimensional array into a single-dimensional array.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Flatten.html",
+      "arguments": {
+        "value": {
+          "type": "array",
+          "required": false,
+          "description": "An array"
+        }
+      }
+    },
+    "f:floor": {
+      "description": "The FloorViewHelper rounds down a float value to the next integer. The ViewHelper mimics PHP's floor() function.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Floor.html",
+      "arguments": {
+        "value": {
+          "type": "float",
+          "required": false,
+          "description": "The number that should be rounded down"
+        }
+      }
+    },
+    "f:for": {
+      "description": "Loop ViewHelper which can be used to iterate over arrays. Implements what a basic PHP foreach() does.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/For.html",
+      "arguments": {
+        "as": {
+          "type": "string",
+          "required": true,
+          "description": "The name of the iteration variable"
+        },
+        "each": {
+          "type": "array",
+          "required": true,
+          "description": "The array or \\SplObjectStorage to iterated over"
+        },
+        "iteration": {
+          "type": "string",
+          "required": false,
+          "description": "The name of the variable to store iteration information (index, cycle, total, isFirst, isLast, isEven, isOdd)"
+        },
+        "key": {
+          "type": "string",
+          "required": false,
+          "description": "Variable to assign array key to"
+        },
+        "reverse": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, iterates in reverse",
+          "default": "false"
+        }
+      }
+    },
+    "f:form": {
+      "description": "ViewHelper to generate a <form> tag and prepare context for further <f:form> ViewHelpers within that form. Tailored for Extbase plugins, uses Extbase Request.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/Index.html",
+      "arguments": {
+        "absolute": {
+          "type": "bool",
+          "required": false,
+          "description": "If set, an absolute action URI is rendered (only active if $actionUri is not set)",
+          "default": "false"
+        },
+        "action": {
+          "type": "string",
+          "required": false,
+          "description": "Target action"
+        },
+        "actionUri": {
+          "type": "string",
+          "required": false,
+          "description": "can be used to overwrite the \"action\" attribute of the form tag"
+        },
+        "addQueryString": {
+          "type": "string",
+          "required": false,
+          "description": "If set, the current query parameters will be kept in the URL. If set to \"untrusted\", then ALL query parameters will be added. Be aware, that this might lead to problems when the generated link is cached.",
+          "default": "false"
+        },
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "additionalParams": {
+          "type": "array",
+          "required": false,
+          "description": "additional action URI query parameters that won't be prefixed like $arguments (overrule $arguments) (only active if $actionUri is not set)",
+          "default": "array ( )"
+        },
+        "arguments": {
+          "type": "array",
+          "required": false,
+          "description": "Arguments (do not use reserved keywords \"action\", \"controller\" or \"format\" if not referring to these internal variables specifically)",
+          "default": "array ( )"
+        },
+        "argumentsToBeExcludedFromQueryString": {
+          "type": "array",
+          "required": false,
+          "description": "arguments to be removed from the action URI. Only active if $addQueryString = TRUE and $actionUri is not set",
+          "default": "array ( )"
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "controller": {
+          "type": "string",
+          "required": false,
+          "description": "Target controller"
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "extensionName": {
+          "type": "string",
+          "required": false,
+          "description": "Target Extension Name (without `tx_` prefix and no underscores). If NULL the current extension name is used"
+        },
+        "fieldNamePrefix": {
+          "type": "string",
+          "required": false,
+          "description": "Prefix that will be added to all field names within this form. If not set the prefix will be tx_yourExtension_plugin"
+        },
+        "format": {
+          "type": "string",
+          "required": false,
+          "description": "The requested format (e.g. \".html\") of the target page (only active if $actionUri is not set)",
+          "default": "''"
+        },
+        "hiddenFieldClassName": {
+          "type": "string",
+          "required": false,
+          "description": "hiddenFieldClassName"
+        },
+        "method": {
+          "type": "string",
+          "required": false,
+          "description": "Transfer type (get or post)",
+          "default": "'post'"
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of form"
+        },
+        "noCache": {
+          "type": "bool",
+          "required": false,
+          "description": "set this to disable caching for the target page. You should not need this.",
+          "default": "false"
+        },
+        "novalidate": {
+          "type": "bool",
+          "required": false,
+          "description": "Indicate that the form is not to be validated on submit."
+        },
+        "object": {
+          "type": "mixed",
+          "required": false,
+          "description": "Object to use for the form. Use in conjunction with the \"property\" attribute on the sub tags"
+        },
+        "objectName": {
+          "type": "string",
+          "required": false,
+          "description": "name of the object that is bound to this form. If this argument is not specified, the name attribute of this form is used to determine the FormObjectName"
+        },
+        "pageType": {
+          "type": "int",
+          "required": false,
+          "description": "Target page type",
+          "default": "0"
+        },
+        "pageUid": {
+          "type": "int",
+          "required": false,
+          "description": "Target page uid"
+        },
+        "pluginName": {
+          "type": "string",
+          "required": false,
+          "description": "Target plugin. If empty, the current plugin name is used"
+        },
+        "requestToken": {
+          "type": "mixed",
+          "required": false,
+          "description": "whether to add that request token to the form"
+        },
+        "section": {
+          "type": "string",
+          "required": false,
+          "description": "The anchor to be added to the action URI (only active if $actionUri is not set)",
+          "default": "''"
+        },
+        "signingType": {
+          "type": "string",
+          "required": false,
+          "description": "which signing type to be used on the request token (falls back to \"nonce\")"
+        }
+      }
+    },
+    "f:form.button": {
+      "description": "This ViewHelper creates a <button> HTML element within the Form ViewHelper <f:form>.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/Button.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of input tag"
+        },
+        "property": {
+          "type": "string",
+          "required": false,
+          "description": "Name of Object Property. If used in conjunction with <f:form object=\"...\">, the \"name\" property will be ignored, while \"value\" can be used to specify a default field value instead of the object property value."
+        },
+        "type": {
+          "type": "string",
+          "required": false,
+          "description": "Specifies the type of button (e.g. \"button\", \"reset\" or \"submit\")",
+          "default": "'submit'",
+          "values": [
+            "submit",
+            "button",
+            "reset"
+          ]
+        },
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value of input tag"
+        }
+      }
+    },
+    "f:form.checkbox": {
+      "description": "ViewHelper which renders a simple checkbox <input type=\"checkbox\">.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/Checkbox.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "checked": {
+          "type": "bool",
+          "required": false,
+          "description": "Specifies that the input element should be preselected"
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "errorClass": {
+          "type": "string",
+          "required": false,
+          "description": "CSS class to set if there are errors for this ViewHelper",
+          "default": "'f3-form-error'"
+        },
+        "multiple": {
+          "type": "bool",
+          "required": false,
+          "description": "Specifies whether this checkbox belongs to a multivalue (is part of a checkbox group)",
+          "default": "false"
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of input tag"
+        },
+        "property": {
+          "type": "string",
+          "required": false,
+          "description": "Name of Object Property. If used in conjunction with <f:form object=\"...\">, the \"name\" property will be ignored, while \"value\" can be used to specify a default field value instead of the object property value."
+        },
+        "value": {
+          "type": "string",
+          "required": true,
+          "description": "Value of input tag. Required for checkboxes"
+        }
+      }
+    },
+    "f:form.countrySelect": {
+      "description": "ViewHelper which renders a <select> tag with all or specific countries as options.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/CountrySelect.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "alternativeLanguage": {
+          "type": "string",
+          "required": false,
+          "description": "If specified, the country list will be shown in the given language."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "errorClass": {
+          "type": "string",
+          "required": false,
+          "description": "CSS class to set if there are errors for this ViewHelper",
+          "default": "'f3-form-error'"
+        },
+        "excludeCountries": {
+          "type": "array",
+          "required": false,
+          "description": "Array with country codes that should not be shown.",
+          "default": "array ( )"
+        },
+        "multiple": {
+          "type": "boolean",
+          "required": false,
+          "description": "If set multiple options may be selected.",
+          "default": "false"
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of input tag"
+        },
+        "onlyCountries": {
+          "type": "array",
+          "required": false,
+          "description": "If set, only the country codes in the list are rendered.",
+          "default": "array ( )"
+        },
+        "optionLabelField": {
+          "type": "string",
+          "required": false,
+          "description": "If specified, will call the appropriate getter on each object to determine the label. Use \"name\", \"localizedName\", \"officialName\" or \"localizedOfficialName\"",
+          "default": "'localizedName'"
+        },
+        "prependOptionLabel": {
+          "type": "string",
+          "required": false,
+          "description": "If specified, will provide an option at first position with the specified label."
+        },
+        "prependOptionValue": {
+          "type": "string",
+          "required": false,
+          "description": "If specified, will provide an option at first position with the specified value."
+        },
+        "prioritizedCountries": {
+          "type": "array",
+          "required": false,
+          "description": "A list of country codes which should be listed on top of the list.",
+          "default": "array ( )"
+        },
+        "property": {
+          "type": "string",
+          "required": false,
+          "description": "Name of Object Property. If used in conjunction with <f:form object=\"...\">, the \"name\" property will be ignored, while \"value\" can be used to specify a default field value instead of the object property value."
+        },
+        "required": {
+          "type": "boolean",
+          "required": false,
+          "description": "If set no empty value is allowed.",
+          "default": "false"
+        },
+        "sortByOptionLabel": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, List will be sorted by label.",
+          "default": "false"
+        },
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value of input tag"
+        }
+      }
+    },
+    "f:form.hidden": {
+      "description": "ViewHelper which renders an <input type=\"hidden\" ...> tag.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/Hidden.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of input tag"
+        },
+        "property": {
+          "type": "string",
+          "required": false,
+          "description": "Name of Object Property. If used in conjunction with <f:form object=\"...\">, the \"name\" property will be ignored, while \"value\" can be used to specify a default field value instead of the object property value."
+        },
+        "respectSubmittedDataValue": {
+          "type": "bool",
+          "required": false,
+          "description": "enable or disable the usage of the submitted values",
+          "default": "true"
+        },
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value of input tag"
+        }
+      }
+    },
+    "f:form.password": {
+      "description": "ViewHelper which renders a simple password text box <input type=\"password\">.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/Password.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "errorClass": {
+          "type": "string",
+          "required": false,
+          "description": "CSS class to set if there are errors for this ViewHelper",
+          "default": "'f3-form-error'"
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of input tag"
+        },
+        "property": {
+          "type": "string",
+          "required": false,
+          "description": "Name of Object Property. If used in conjunction with <f:form object=\"...\">, the \"name\" property will be ignored, while \"value\" can be used to specify a default field value instead of the object property value."
+        },
+        "respectSubmittedDataValue": {
+          "type": "bool",
+          "required": false,
+          "description": "If set to false (default), any user-submitted data is not displayed in the output. If set to true, the password is emitted as clear text in the response. This is not recommended from a security point of view.",
+          "default": "false"
+        },
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value of input tag"
+        }
+      }
+    },
+    "f:form.radio": {
+      "description": "ViewHelper which renders a simple radio button <input type=\"radio\">.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/Radio.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "checked": {
+          "type": "bool",
+          "required": false,
+          "description": "Specifies that the input element should be preselected"
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "errorClass": {
+          "type": "string",
+          "required": false,
+          "description": "CSS class to set if there are errors for this ViewHelper",
+          "default": "'f3-form-error'"
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of input tag"
+        },
+        "property": {
+          "type": "string",
+          "required": false,
+          "description": "Name of Object Property. If used in conjunction with <f:form object=\"...\">, the \"name\" property will be ignored, while \"value\" can be used to specify a default field value instead of the object property value."
+        },
+        "value": {
+          "type": "string",
+          "required": true,
+          "description": "Value of input tag. Required for radio buttons"
+        }
+      }
+    },
+    "f:form.select": {
+      "description": "ViewHelper which renders a <select> dropdown list for use within a form.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/Select.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "errorClass": {
+          "type": "string",
+          "required": false,
+          "description": "CSS class to set if there are errors for this ViewHelper",
+          "default": "'f3-form-error'"
+        },
+        "multiple": {
+          "type": "boolean",
+          "required": false,
+          "description": "If set multiple options may be selected.",
+          "default": "false"
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of input tag"
+        },
+        "optionLabelField": {
+          "type": "string",
+          "required": false,
+          "description": "If specified, will call the appropriate getter on each object to determine the label."
+        },
+        "optionValueField": {
+          "type": "string",
+          "required": false,
+          "description": "If specified, will call the appropriate getter on each object to determine the value."
+        },
+        "options": {
+          "type": "array",
+          "required": false,
+          "description": "Associative array with internal IDs as key, and the values are displayed in the select box. Can be combined with or replaced by child f:form.select.* nodes."
+        },
+        "optionsAfterContent": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, places auto-generated option tags after those rendered in the tag content. If false, automatic options come first.",
+          "default": "false"
+        },
+        "prependOptionLabel": {
+          "type": "string",
+          "required": false,
+          "description": "If specified, will provide an option at first position with the specified label."
+        },
+        "prependOptionValue": {
+          "type": "string",
+          "required": false,
+          "description": "If specified, will provide an option at first position with the specified value."
+        },
+        "property": {
+          "type": "string",
+          "required": false,
+          "description": "Name of Object Property. If used in conjunction with <f:form object=\"...\">, the \"name\" property will be ignored, while \"value\" can be used to specify a default field value instead of the object property value."
+        },
+        "required": {
+          "type": "boolean",
+          "required": false,
+          "description": "If set no empty value is allowed.",
+          "default": "false"
+        },
+        "selectAllByDefault": {
+          "type": "boolean",
+          "required": false,
+          "description": "If specified options are selected if none was set before.",
+          "default": "false"
+        },
+        "sortByOptionLabel": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, List will be sorted by label.",
+          "default": "false"
+        },
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be inserted in HTML tag - must be convertible to string!"
+        },
+        "selected": {
+          "type": "boolean",
+          "required": false,
+          "description": "If set, overrides automatic detection of selected state for this option."
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, option group is rendered as disabled",
+          "default": "false"
+        }
+      }
+    },
+    "f:form.submit": {
+      "description": "Creates a submit button (<input type=\"submit\"...>) within a Form ViewHelper <f:form>.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/Submit.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of input tag"
+        },
+        "property": {
+          "type": "string",
+          "required": false,
+          "description": "Name of Object Property. If used in conjunction with <f:form object=\"...\">, the \"name\" property will be ignored, while \"value\" can be used to specify a default field value instead of the object property value."
+        },
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value of input tag"
+        }
+      }
+    },
+    "f:form.textarea": {
+      "description": "ViewHelper which renders a <textarea> large text input area inside a form.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/Textarea.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "errorClass": {
+          "type": "string",
+          "required": false,
+          "description": "CSS class to set if there are errors for this ViewHelper",
+          "default": "'f3-form-error'"
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of input tag"
+        },
+        "property": {
+          "type": "string",
+          "required": false,
+          "description": "Name of Object Property. If used in conjunction with <f:form object=\"...\">, the \"name\" property will be ignored, while \"value\" can be used to specify a default field value instead of the object property value."
+        },
+        "required": {
+          "type": "bool",
+          "required": false,
+          "description": "Specifies whether the textarea is required",
+          "default": "false"
+        },
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value of input tag"
+        }
+      }
+    },
+    "f:form.textfield": {
+      "description": "ViewHelper which renders a text field <input type=\"text\">.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/Textfield.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "errorClass": {
+          "type": "string",
+          "required": false,
+          "description": "CSS class to set if there are errors for this ViewHelper",
+          "default": "'f3-form-error'"
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of input tag"
+        },
+        "property": {
+          "type": "string",
+          "required": false,
+          "description": "Name of Object Property. If used in conjunction with <f:form object=\"...\">, the \"name\" property will be ignored, while \"value\" can be used to specify a default field value instead of the object property value."
+        },
+        "required": {
+          "type": "bool",
+          "required": false,
+          "description": "If the field is required or not",
+          "default": "false"
+        },
+        "type": {
+          "type": "string",
+          "required": false,
+          "description": "The field type, e.g. \"text\", \"email\", \"url\" etc.",
+          "default": "'text'"
+        },
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value of input tag"
+        }
+      }
+    },
+    "f:form.upload": {
+      "description": "ViewHelper which renders an <input type=\"file\"> file upload HTML form element. Make sure to set the enctype=\"multipart/form-data\" attribute on the surrounding form!",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/Upload.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "errorClass": {
+          "type": "string",
+          "required": false,
+          "description": "CSS class to set if there are errors for this ViewHelper",
+          "default": "'f3-form-error'"
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of input tag"
+        },
+        "property": {
+          "type": "string",
+          "required": false,
+          "description": "Name of Object Property. If used in conjunction with <f:form object=\"...\">, the \"name\" property will be ignored, while \"value\" can be used to specify a default field value instead of the object property value."
+        },
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value of input tag"
+        }
+      }
+    },
+    "f:form.uploadDeleteCheckbox": {
+      "description": "ViewHelper which renders a checkbox field used for file upload deletion in Extbase forms.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/UploadDeleteCheckbox.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "fileReference": {
+          "type": "TYPO3\\CMS\\Extbase\\Domain\\Model\\FileReference",
+          "required": true,
+          "description": "The file reference object"
+        },
+        "id": {
+          "type": "string",
+          "required": false,
+          "description": "ID of the generated checkbox element"
+        },
+        "property": {
+          "type": "string",
+          "required": true,
+          "description": "Name of object property"
+        }
+      }
+    },
+    "f:form.validationResults": {
+      "description": "ViewHelper which renders form validation results.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Form/ValidationResults.html",
+      "arguments": {
+        "as": {
+          "type": "string",
+          "required": false,
+          "description": "The name of the variable to store the current error",
+          "default": "'validationResults'"
+        },
+        "for": {
+          "type": "string",
+          "required": false,
+          "description": "The name of the error name (e.g. argument name or property name). This can also be a property path (like blog.title), and will then only display the validation errors of that property.",
+          "default": "''"
+        }
+      }
+    },
+    "f:format.bytes": {
+      "description": "ViewHelper which formats an integer (byte count) into specific human-readable output.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Bytes.html",
+      "arguments": {
+        "decimalSeparator": {
+          "type": "string",
+          "required": false,
+          "description": "The decimal point character",
+          "default": "'.'"
+        },
+        "decimals": {
+          "type": "int",
+          "required": false,
+          "description": "The number of digits after the decimal point",
+          "default": "0"
+        },
+        "thousandsSeparator": {
+          "type": "string",
+          "required": false,
+          "description": "The character for grouping the thousand digits",
+          "default": "','"
+        },
+        "units": {
+          "type": "string",
+          "required": false,
+          "description": "comma separated list of available units, default is LocalizationUtility::translate('viewhelper.format.bytes.units', 'fluid')"
+        },
+        "value": {
+          "type": "int|float|string",
+          "required": false,
+          "description": "The incoming data to convert, or NULL if VH children should be used"
+        }
+      }
+    },
+    "f:format.case": {
+      "description": "Modifies the case of an input string to upper- or lowercase or capitalization. The default transformation will be uppercase as in mb_convert_case.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Case.html",
+      "arguments": {
+        "mode": {
+          "type": "string",
+          "required": false,
+          "description": "The case to apply, must be one of this' CASE_* constants. Defaults to uppercase application.",
+          "default": "'upper'",
+          "values": [
+            "lower",
+            "upper",
+            "capital",
+            "uncapital",
+            "capitalWords"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "required": false,
+          "description": "The input value. If not given, the evaluated child nodes will be used."
+        }
+      }
+    },
+    "f:format.cdata": {
+      "description": "Outputs an argument/value without any escaping and wraps it with CDATA tags.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Cdata.html",
+      "arguments": {
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "The value to output"
+        }
+      }
+    },
+    "f:format.crop": {
+      "description": "ViewHelper which can crop (shorten) a text. Whitespace within the <f:format.crop> element will be counted as characters.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Crop.html",
+      "arguments": {
+        "append": {
+          "type": "string",
+          "required": false,
+          "description": "What to append, if truncation happened",
+          "default": "'&hellip;'"
+        },
+        "maxCharacters": {
+          "type": "int",
+          "required": true,
+          "description": "Place where to truncate the string"
+        },
+        "respectHtml": {
+          "type": "bool",
+          "required": false,
+          "description": "If TRUE the cropped string will respect HTML tags and entities. Technically that means, that cropHTML() is called rather than crop()",
+          "default": "true"
+        },
+        "respectWordBoundaries": {
+          "type": "bool",
+          "required": false,
+          "description": "If TRUE and division is in the middle of a word, the remains of that word is removed.",
+          "default": "true"
+        }
+      }
+    },
+    "f:format.currency": {
+      "description": "ViewHelper which formats a given float to a currency representation.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Currency.html",
+      "arguments": {
+        "currencySign": {
+          "type": "string",
+          "required": false,
+          "description": "The currency sign, eg $ or €.",
+          "default": "''"
+        },
+        "decimalSeparator": {
+          "type": "string",
+          "required": false,
+          "description": "The separator for the decimal point.",
+          "default": "','"
+        },
+        "decimals": {
+          "type": "int",
+          "required": false,
+          "description": "Set decimals places.",
+          "default": "2"
+        },
+        "prependCurrency": {
+          "type": "bool",
+          "required": false,
+          "description": "Select if the currency sign should be prepended",
+          "default": "false"
+        },
+        "separateCurrency": {
+          "type": "bool",
+          "required": false,
+          "description": "Separate the currency sign from the number by a single space, defaults to true due to backwards compatibility",
+          "default": "true"
+        },
+        "thousandsSeparator": {
+          "type": "string",
+          "required": false,
+          "description": "The thousands separator.",
+          "default": "'.'"
+        },
+        "useDash": {
+          "type": "bool",
+          "required": false,
+          "description": "Use the dash instead of decimal 00",
+          "default": "false"
+        }
+      }
+    },
+    "f:format.date": {
+      "description": "ViewHelper to format an object implementing \\DateTimeInterface into human-readable output.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Date.html",
+      "arguments": {
+        "base": {
+          "type": "mixed",
+          "required": false,
+          "description": "A base time (an object implementing DateTimeInterface or a string) used if $date is a relative date specification. Defaults to current time."
+        },
+        "date": {
+          "type": "mixed",
+          "required": false,
+          "description": "Either an object implementing DateTimeInterface or a string that is accepted by DateTime constructor"
+        },
+        "format": {
+          "type": "string",
+          "required": false,
+          "description": "Format String which is taken to format the Date/Time",
+          "default": "''"
+        },
+        "locale": {
+          "type": "string",
+          "required": false,
+          "description": "A locale format such as \"nl-NL\" to format the date in a specific locale, if none given, uses the current locale of the current request. Only works when pattern argument is given"
+        },
+        "pattern": {
+          "type": "string",
+          "required": false,
+          "description": "Format date based on unicode ICO format pattern given see https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax. If both \"pattern\" and \"format\" arguments are given, pattern will be used."
+        },
+        "timezone": {
+          "type": "string",
+          "required": false,
+          "description": "Timezone for the date"
+        }
+      }
+    },
+    "f:format.html": {
+      "description": "ViewHelper to render a string which can contain HTML markup by passing it to a TYPO3 parseFunc. This can sanitize unwanted HTML tags and attributes, and keep wanted HTML syntax and take care of link substitution and other parsing. Either specify a path to the TypoScript setting or set the parseFunc options directly. By default, lib.parseFunc_RTE is",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Html.html",
+      "arguments": {
+        "current": {
+          "type": "string",
+          "required": false,
+          "description": "Initialize the content object with this value for current property."
+        },
+        "currentValueKey": {
+          "type": "string",
+          "required": false,
+          "description": "Define the value key, used to locate the current value for the content object"
+        },
+        "data": {
+          "type": "mixed",
+          "required": false,
+          "description": "Initialize the content object with this set of data. Either an array or object."
+        },
+        "parseFuncTSPath": {
+          "type": "string",
+          "required": false,
+          "description": "Path to the TypoScript parseFunc setup.",
+          "default": "'lib.parseFunc_RTE'"
+        },
+        "table": {
+          "type": "string",
+          "required": false,
+          "description": "The table name associated with the \"data\" argument.",
+          "default": "''"
+        }
+      }
+    },
+    "f:format.htmlentities": {
+      "description": "ViewHelper to apply htmlentities() escaping to a value, transforming all HTML special characters to entity representations (like \" to &quot;).",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Htmlentities.html",
+      "arguments": {
+        "doubleEncode": {
+          "type": "bool",
+          "required": false,
+          "description": "If FALSE existing html entities won't be encoded, the default is to convert everything.",
+          "default": "true"
+        },
+        "encoding": {
+          "type": "string",
+          "required": false,
+          "description": "Define the encoding used when converting characters (Default: UTF-8"
+        },
+        "keepQuotes": {
+          "type": "bool",
+          "required": false,
+          "description": "If TRUE, single and double quotes won't be replaced (sets ENT_NOQUOTES flag).",
+          "default": "false"
+        },
+        "value": {
+          "type": "string",
+          "required": false,
+          "description": "string to format"
+        }
+      }
+    },
+    "f:format.htmlentitiesDecode": {
+      "description": "ViewHelper to apply html_entity_decode() to a value, transforming HTML entity representations back into HTML special characters (like &quot; to \").",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/HtmlentitiesDecode.html",
+      "arguments": {
+        "encoding": {
+          "type": "string",
+          "required": false,
+          "description": "Define the encoding used when converting characters (Default: UTF-8)."
+        },
+        "keepQuotes": {
+          "type": "bool",
+          "required": false,
+          "description": "If TRUE, single and double quotes won't be replaced (sets ENT_NOQUOTES flag).",
+          "default": "false"
+        },
+        "value": {
+          "type": "string",
+          "required": false,
+          "description": "string to format"
+        }
+      }
+    },
+    "f:format.htmlspecialchars": {
+      "description": "Applies PHP htmlspecialchars() escaping to a value.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Htmlspecialchars.html",
+      "arguments": {
+        "doubleEncode": {
+          "type": "boolean",
+          "required": false,
+          "description": "If false, html entities will not be encoded",
+          "default": "true"
+        },
+        "encoding": {
+          "type": "string",
+          "required": false,
+          "description": "Encoding",
+          "default": "'UTF-8'"
+        },
+        "keepQuotes": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true quotes will not be replaced (ENT_NOQUOTES)",
+          "default": "false"
+        },
+        "value": {
+          "type": "string",
+          "required": false,
+          "description": "Value to format"
+        }
+      }
+    },
+    "f:format.json": {
+      "description": "Wrapper for PHPs json_encode function. See https://www.php.net/manual/function.json-encode.php.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Json.html",
+      "arguments": {
+        "forceObject": {
+          "type": "bool",
+          "required": false,
+          "description": "Outputs an JSON object rather than an array",
+          "default": "false"
+        },
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "The incoming data to convert, or null if VH children should be used"
+        }
+      }
+    },
+    "f:format.nl2br": {
+      "description": "Wrapper for PHPs nl2br function. See https://www.php.net/manual/function.nl2br.php.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Nl2br.html",
+      "arguments": {
+        "value": {
+          "type": "string",
+          "required": false,
+          "description": "string to format"
+        }
+      }
+    },
+    "f:format.number": {
+      "description": "Formats a number with custom precision, decimal point and grouped thousands. See https://www.php.net/manual/function.number-format.php.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Number.html",
+      "arguments": {
+        "decimalSeparator": {
+          "type": "string",
+          "required": false,
+          "description": "The decimal point character",
+          "default": "'.'"
+        },
+        "decimals": {
+          "type": "int",
+          "required": false,
+          "description": "The number of digits after the decimal point",
+          "default": "2"
+        },
+        "thousandsSeparator": {
+          "type": "string",
+          "required": false,
+          "description": "The character for grouping the thousand digits",
+          "default": "','"
+        }
+      }
+    },
+    "f:format.padding": {
+      "description": "ViewHelper to format a string to specific lengths, by using PHPs str_pad function.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Padding.html",
+      "arguments": {
+        "padLength": {
+          "type": "int",
+          "required": true,
+          "description": "Length of the resulting string. If the value of pad_length is negative or less than the length of the input string, no padding takes place."
+        },
+        "padString": {
+          "type": "string",
+          "required": false,
+          "description": "The padding string",
+          "default": "' '"
+        },
+        "padType": {
+          "type": "string",
+          "required": false,
+          "description": "Append the padding at this site (Possible values: right,left,both. Default: right)",
+          "default": "'right'"
+        },
+        "value": {
+          "type": "string",
+          "required": false,
+          "description": "string to format"
+        }
+      }
+    },
+    "f:format.printf": {
+      "description": "A ViewHelper for formatting values with printf. Either supply an array for the arguments or a single value.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Printf.html",
+      "arguments": {
+        "arguments": {
+          "type": "array",
+          "required": false,
+          "description": "The arguments for vsprintf",
+          "default": "array ( )"
+        },
+        "value": {
+          "type": "string",
+          "required": false,
+          "description": "String to format"
+        }
+      }
+    },
+    "f:format.raw": {
+      "description": "Outputs an argument/value without any escaping. Is normally used to output an ObjectAccessor which should not be escaped, but output as-is.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Raw.html",
+      "arguments": {
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "The value to output"
+        }
+      }
+    },
+    "f:format.stripTags": {
+      "description": "Removes tags from the given string (applying PHPs strip_tags() function) See https://www.php.net/manual/function.strip-tags.php.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/StripTags.html",
+      "arguments": {
+        "allowedTags": {
+          "type": "string",
+          "required": false,
+          "description": "Optional string of allowed tags as required by PHPs strip_tags() function"
+        },
+        "value": {
+          "type": "string",
+          "required": false,
+          "description": "string to format"
+        }
+      }
+    },
+    "f:format.trim": {
+      "description": "This ViewHelper strips whitespace (or other characters) from the beginning and end of a string.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Trim.html",
+      "arguments": {
+        "characters": {
+          "type": "string",
+          "required": false,
+          "description": "Optionally, the stripped characters can also be specified using the characters parameter. Simply list all characters that you want to be stripped. With .. you can specify a range of characters."
+        },
+        "side": {
+          "type": "string",
+          "required": false,
+          "description": "The side to apply, must be one of this' CASE_* constants. Defaults to both application.",
+          "default": "'both'"
+        },
+        "value": {
+          "type": "string",
+          "required": false,
+          "description": "The string value to be trimmed. If not given, the evaluated child nodes will be used."
+        }
+      }
+    },
+    "f:format.urlencode": {
+      "description": "Encodes the given string according to http://www.faqs.org/rfcs/rfc3986.html Applying PHPs rawurlencode() function. See https://www.php.net/manual/function.rawurlencode.php.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Format/Urlencode.html",
+      "arguments": {
+        "value": {
+          "type": "string",
+          "required": false,
+          "description": "string to format"
+        }
+      }
+    },
+    "f:fragment": {
+      "description": "f:fragment is the counterpart of the <f:slot> ViewHelper. It allows to provide multiple HTML fragments to a component, which defines the matching named slots. f:fragment is used directly inside a component tag, nesting into other ViewHelpers is not possible.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Fragment.html",
+      "arguments": {
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of the slot that should be filled",
+          "default": "'default'"
+        }
+      }
+    },
+    "f:groupedFor": {
+      "description": "Grouped loop ViewHelper. Loops through the specified values.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/GroupedFor.html",
+      "arguments": {
+        "as": {
+          "type": "string",
+          "required": true,
+          "description": "The name of the iteration variable"
+        },
+        "each": {
+          "type": "array",
+          "required": true,
+          "description": "The array or \\SplObjectStorage to iterated over"
+        },
+        "groupBy": {
+          "type": "string",
+          "required": true,
+          "description": "Group by this property"
+        },
+        "groupKey": {
+          "type": "string",
+          "required": false,
+          "description": "The name of the variable to store the current group",
+          "default": "'groupKey'"
+        }
+      }
+    },
+    "f:if": {
+      "description": "This ViewHelper implements an if/else condition.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/If.html",
+      "arguments": {
+        "condition": {
+          "type": "boolean",
+          "required": false,
+          "description": "Condition expression conforming to Fluid boolean rules",
+          "default": "false"
+        },
+        "else": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if not met."
+        },
+        "then": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if met."
+        }
+      }
+    },
+    "f:image": {
+      "description": "ViewHelper to resize, crop or convert a given image (if required) and render the corresponding HTML <img> tag showing the processed image.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Image.html",
+      "arguments": {
+        "absolute": {
+          "type": "bool",
+          "required": false,
+          "description": "Force absolute URL",
+          "default": "false"
+        },
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "base64": {
+          "type": "bool",
+          "required": false,
+          "description": "Adds the image data base64-encoded inline to the image‘s \"src\" attribute. Useful for FluidEmail templates.",
+          "default": "false"
+        },
+        "crop": {
+          "type": "string|bool|array",
+          "required": false,
+          "description": "overrule cropping of image (setting to FALSE disables the cropping set in FileReference)"
+        },
+        "cropVariant": {
+          "type": "string",
+          "required": false,
+          "description": "select a cropping variant, in case multiple croppings have been specified or stored in FileReference",
+          "default": "'default'"
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "fileExtension": {
+          "type": "string",
+          "required": false,
+          "description": "Custom file extension to use"
+        },
+        "height": {
+          "type": "string",
+          "required": false,
+          "description": "height of the image. This can be a numeric value representing the fixed height of the image in pixels. But you can also perform simple calculations by adding \"m\" or \"c\" to the value. See imgResource.height in the TypoScript Reference https://docs.typo3.org/permalink/t3tsref:confval-imgresource-height for possible options."
+        },
+        "image": {
+          "type": "object",
+          "required": false,
+          "description": "a FAL object (\\TYPO3\\CMS\\Core\\Resource\\File or \\TYPO3\\CMS\\Core\\Resource\\FileReference)"
+        },
+        "maxHeight": {
+          "type": "int",
+          "required": false,
+          "description": "maximum height of the image"
+        },
+        "maxWidth": {
+          "type": "int",
+          "required": false,
+          "description": "maximum width of the image"
+        },
+        "minHeight": {
+          "type": "int",
+          "required": false,
+          "description": "minimum height of the image"
+        },
+        "minWidth": {
+          "type": "int",
+          "required": false,
+          "description": "minimum width of the image"
+        },
+        "src": {
+          "type": "string",
+          "required": false,
+          "description": "a path to a file, a combined FAL identifier or an uid (int). If $treatIdAsReference is set, the integer is considered the uid of the sys_file_reference record. If you already got a FAL object, consider using the $image parameter instead",
+          "default": "''"
+        },
+        "treatIdAsReference": {
+          "type": "bool",
+          "required": false,
+          "description": "given src argument is a sys_file_reference record",
+          "default": "false"
+        },
+        "width": {
+          "type": "string",
+          "required": false,
+          "description": "width of the image. This can be a numeric value representing the fixed width of the image in pixels. But you can also perform simple calculations by adding \"m\" or \"c\" to the value. See imgResource.width in the TypoScript Reference on https://docs.typo3.org/permalink/t3tsref:confval-imgresource-width for possible options."
+        }
+      }
+    },
+    "f:image.srcset": {
+      "description": "ViewHelper to generate a list of image URLs and their corresponding srcset descriptors to be used in a srcset attribute of an <img> or <source> tag.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Image/Srcset.html",
+      "arguments": {
+        "absolute": {
+          "type": "bool",
+          "required": false,
+          "description": "Force absolute URL for generated images",
+          "default": "false"
+        },
+        "crop": {
+          "type": "string|bool|array",
+          "required": false,
+          "description": "Overrule cropping of image (setting to FALSE disables the cropping set in FileReference)"
+        },
+        "cropVariant": {
+          "type": "string",
+          "required": false,
+          "description": "Select a cropping variant, in case multiple croppings have been specified or stored in FileReference",
+          "default": "'default'"
+        },
+        "fileExtension": {
+          "type": "string",
+          "required": false,
+          "description": "Use the specified target file extension for generated images; files will be converted if necessary"
+        },
+        "image": {
+          "type": "TYPO3\\CMS\\Core\\Resource\\FileInterface|TYPO3\\CMS\\Extbase\\Domain\\Model\\File|TYPO3\\CMS\\Extbase\\Domain\\Model\\FileReference",
+          "required": false,
+          "description": "A FAL object (\\TYPO3\\CMS\\Core\\Resource\\File or \\TYPO3\\CMS\\Core\\Resource\\FileReference); if not specified, ViewHelper children will be used as a fallback."
+        },
+        "referenceWidth": {
+          "type": "int",
+          "required": false,
+          "description": "Image width that will be used as base (1x) when calculating srcset with pixel density descriptors (e. g. 2x). This is irrelevant for width descriptors."
+        },
+        "srcset": {
+          "type": "string",
+          "required": true,
+          "description": "Comma-separated list of width descriptors (e. g. 200w) or pixel density descriptors (e. g. 2x)."
+        }
+      }
+    },
+    "f:inline": {
+      "description": "Inline Fluid rendering ViewHelper",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Inline.html",
+      "arguments": {
+        "code": {
+          "type": "string",
+          "required": false,
+          "description": "Fluid code to be rendered as if it were part of the template rendering it. Can be passed as inline argument or tag content"
+        }
+      }
+    },
+    "f:join": {
+      "description": "The JoinViewHelper combines elements from an array into a single string. You can specify both a general separator and a special one for the last element, which serves as the delimiter between the elements.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Join.html",
+      "arguments": {
+        "separator": {
+          "type": "string",
+          "required": false,
+          "description": "The separator",
+          "default": "''"
+        },
+        "separatorLast": {
+          "type": "string",
+          "required": false,
+          "description": "The separator for the last pair."
+        },
+        "value": {
+          "type": "array",
+          "required": false,
+          "description": "An array"
+        }
+      }
+    },
+    "f:last": {
+      "description": "The LastViewHelper returns the last item of an array.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Last.html",
+      "arguments": {
+        "value": {
+          "type": "array",
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "f:layout": {
+      "description": "With this ViewHelper, you can select a layout to be used for the current template.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Layout.html",
+      "arguments": {
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of layout to use. If none given, \"Default\" is used."
+        }
+      }
+    },
+    "f:length": {
+      "description": "The LengthViewHelper returns the length of a given string. Setting the character encoding is optional.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Length.html",
+      "arguments": {
+        "encoding": {
+          "type": "string",
+          "required": false,
+          "description": "Character encoding"
+        },
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "An string"
+        }
+      }
+    },
+    "f:link.action": {
+      "description": "ViewHelper for creating links to Extbase actions. Tailored for Extbase plugins, uses Extbase Request and Extbase UriBuilder.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Link/Action.html",
+      "arguments": {
+        "absolute": {
+          "type": "bool",
+          "required": false,
+          "description": "If set, the URI of the rendered link is absolute",
+          "default": "false"
+        },
+        "action": {
+          "type": "string",
+          "required": false,
+          "description": "Target action"
+        },
+        "addQueryString": {
+          "type": "string",
+          "required": false,
+          "description": "If set, the current query parameters will be kept in the URL. If set to \"untrusted\", then ALL query parameters will be added. Be aware, that this might lead to problems when the generated link is cached.",
+          "default": "false"
+        },
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "additionalParams": {
+          "type": "array",
+          "required": false,
+          "description": "Additional query parameters that won't be prefixed like $arguments (overrule $arguments)",
+          "default": "array ( )"
+        },
+        "arguments": {
+          "type": "array",
+          "required": false,
+          "description": "Arguments for the controller action, associative array (do not use reserved keywords \"action\", \"controller\" or \"format\" if not referring to these internal variables specifically)",
+          "default": "array ( )"
+        },
+        "argumentsToBeExcludedFromQueryString": {
+          "type": "array",
+          "required": false,
+          "description": "Arguments to be removed from the URI. Only active if $addQueryString = true",
+          "default": "array ( )"
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "controller": {
+          "type": "string",
+          "required": false,
+          "description": "Target controller. If NULL current controllerName is used"
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "extensionName": {
+          "type": "string",
+          "required": false,
+          "description": "Target Extension Name (without `tx_` prefix and no underscores). If NULL the current extension name is used"
+        },
+        "format": {
+          "type": "string",
+          "required": false,
+          "description": "The requested format, e.g. \".html",
+          "default": "''"
+        },
+        "language": {
+          "type": "string",
+          "required": false,
+          "description": "link to a specific language - defaults to the current language, use a language ID or \"current\" to enforce a specific language"
+        },
+        "linkAccessRestrictedPages": {
+          "type": "bool",
+          "required": false,
+          "description": "If set, links pointing to access restricted pages will still link to the page even though the page cannot be accessed.",
+          "default": "false"
+        },
+        "noCache": {
+          "type": "bool",
+          "required": false,
+          "description": "Set this to disable caching for the target page. You should not need this."
+        },
+        "pageType": {
+          "type": "int",
+          "required": false,
+          "description": "Type of the target page. See typolink.parameter",
+          "default": "0"
+        },
+        "pageUid": {
+          "type": "int",
+          "required": false,
+          "description": "Target page. See TypoLink destination"
+        },
+        "pluginName": {
+          "type": "string",
+          "required": false,
+          "description": "Target plugin. If empty, the current plugin name is used"
+        },
+        "section": {
+          "type": "string",
+          "required": false,
+          "description": "The anchor to be added to the URI",
+          "default": "''"
+        }
+      }
+    },
+    "f:link.email": {
+      "description": "ViewHelper to generate an email link (mailto:), respecting TYPO3s spamProtectEmailAddresses TypoScript setting.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Link/Email.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "bcc": {
+          "type": "string",
+          "required": false,
+          "description": "The email address(es) for BCC of the email link"
+        },
+        "body": {
+          "type": "string",
+          "required": false,
+          "description": "A prefilled body for the email link"
+        },
+        "cc": {
+          "type": "string",
+          "required": false,
+          "description": "The email address(es) for CC of the email link"
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "email": {
+          "type": "string",
+          "required": true,
+          "description": "The email address to be turned into a link"
+        },
+        "subject": {
+          "type": "string",
+          "required": false,
+          "description": "A prefilled subject for the email link"
+        }
+      }
+    },
+    "f:link.external": {
+      "description": "ViewHelper for creating links to external targets.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Link/External.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "defaultScheme": {
+          "type": "string",
+          "required": false,
+          "description": "Scheme the href attribute will be prefixed with if specified $uri does not contain a scheme already",
+          "default": "'https'"
+        },
+        "uri": {
+          "type": "string",
+          "required": true,
+          "description": "The URI that will be put in the href attribute of the rendered link tag"
+        }
+      }
+    },
+    "f:link.file": {
+      "description": "ViewHelper for creating links to a file (FAL).",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Link/File.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "download": {
+          "type": "bool",
+          "required": false,
+          "description": "Specifies if file should be downloaded instead of displayed"
+        },
+        "file": {
+          "type": "TYPO3\\CMS\\Core\\Resource\\FileInterface",
+          "required": true,
+          "description": "Specifies the file to create a link to"
+        },
+        "filename": {
+          "type": "string",
+          "required": false,
+          "description": "Specifies an alternative filename. If filename contains a file extension, this must be the same as from 'file'."
+        }
+      }
+    },
+    "f:link.page": {
+      "description": "ViewHelper for creating links to TYPO3 pages.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Link/Page.html",
+      "arguments": {
+        "absolute": {
+          "type": "bool",
+          "required": false,
+          "description": "If set, the URI of the rendered link is absolute"
+        },
+        "addQueryString": {
+          "type": "string",
+          "required": false,
+          "description": "If set, the current query parameters will be kept in the URL. If set to \"untrusted\", then ALL query parameters will be added. Be aware, that this might lead to problems when the generated link is cached.",
+          "default": "false"
+        },
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "additionalParams": {
+          "type": "array",
+          "required": false,
+          "description": "Additional query parameters that won't be prefixed like $arguments (overrule $arguments)"
+        },
+        "argumentsToBeExcludedFromQueryString": {
+          "type": "array",
+          "required": false,
+          "description": "Arguments to be removed from the URI. Only active if $addQueryString = true"
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "language": {
+          "type": "string",
+          "required": false,
+          "description": "link to a specific language - defaults to the current language, use a language ID or \"current\" to enforce a specific language"
+        },
+        "linkAccessRestrictedPages": {
+          "type": "bool",
+          "required": false,
+          "description": "If set, links pointing to access restricted pages will still link to the page even though the page cannot be accessed."
+        },
+        "noCache": {
+          "type": "bool",
+          "required": false,
+          "description": "Set this to disable caching for the target page. You should not need this."
+        },
+        "pageType": {
+          "type": "int",
+          "required": false,
+          "description": "Type of the target page. See typolink.parameter"
+        },
+        "pageUid": {
+          "type": "int",
+          "required": false,
+          "description": "Target page. See TypoLink destination"
+        },
+        "section": {
+          "type": "string",
+          "required": false,
+          "description": "The anchor to be added to the URI"
+        }
+      }
+    },
+    "f:link.typolink": {
+      "description": "ViewHelper to create links from fields supported by the link wizard",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Link/Typolink.html",
+      "arguments": {
+        "absolute": {
+          "type": "bool",
+          "required": false,
+          "description": "Ensure the resulting URL is an absolute URL",
+          "default": "false"
+        },
+        "addQueryString": {
+          "type": "string",
+          "required": false,
+          "description": "If set, the current query parameters will be kept in the URL. If set to \"untrusted\", then ALL query parameters will be added. Be aware, that this might lead to problems when the generated link is cached.",
+          "default": "false"
+        },
+        "addQueryStringExclude": {
+          "type": "string",
+          "required": false,
+          "description": "Define parameters to be excluded from the query string (only active if addQueryString is set)",
+          "default": "''"
+        },
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes to be added directly to the resulting HTML tag",
+          "default": "array ( )"
+        },
+        "additionalParams": {
+          "type": "string",
+          "required": false,
+          "description": "Additional query parameters to be attached to the resulting URL",
+          "default": "''"
+        },
+        "class": {
+          "type": "string",
+          "required": false,
+          "description": "Define classes for the link element",
+          "default": "''"
+        },
+        "language": {
+          "type": "string",
+          "required": false,
+          "description": "link to a specific language - defaults to the current language, use a language ID or \"current\" to enforce a specific language"
+        },
+        "parameter": {
+          "type": "mixed",
+          "required": true,
+          "description": "stdWrap.typolink style parameter string"
+        },
+        "partsAs": {
+          "type": "string",
+          "required": false,
+          "description": "Variable name containing typoLink parts (if any), defaults to \"typoLinkParts\""
+        },
+        "target": {
+          "type": "string",
+          "required": false,
+          "description": "Define where to display the linked URL",
+          "default": "''"
+        },
+        "textWrap": {
+          "type": "string",
+          "required": false,
+          "description": "Wrap the link using the typoscript \"wrap\" data type",
+          "default": "''"
+        },
+        "title": {
+          "type": "string",
+          "required": false,
+          "description": "Define the title for the link element",
+          "default": "''"
+        }
+      }
+    },
+    "f:max": {
+      "description": "The MaxViewHelper returns the maximum element from an array",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Max.html",
+      "arguments": {
+        "value": {
+          "type": "array",
+          "required": false,
+          "description": "An array"
+        }
+      }
+    },
+    "f:media": {
+      "description": "ViewHelper to render a given media file (audio/video/images) with the correct HTML tag.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Media.html",
+      "arguments": {
+        "additionalAttributes": {
+          "type": "array",
+          "required": false,
+          "description": "Additional tag attributes. They will be added directly to the resulting HTML tag."
+        },
+        "additionalConfig": {
+          "type": "array",
+          "required": false,
+          "description": "This array can hold additional configuration that is passed though to the Renderer object",
+          "default": "array ( )"
+        },
+        "aria": {
+          "type": "array",
+          "required": false,
+          "description": "Additional aria-* attributes. They will each be added with a \"aria-\" prefix."
+        },
+        "cropVariant": {
+          "type": "string",
+          "required": false,
+          "description": "select a cropping variant, in case multiple croppings have been specified or stored in FileReference",
+          "default": "'default'"
+        },
+        "data": {
+          "type": "array",
+          "required": false,
+          "description": "Additional data-* attributes. They will each be added with a \"data-\" prefix."
+        },
+        "decoding": {
+          "type": "string",
+          "required": false,
+          "description": "Provides an image decoding hint to the browser. Can be \"sync\", \"async\" or \"auto\""
+        },
+        "file": {
+          "type": "object",
+          "required": true,
+          "description": "File"
+        },
+        "fileExtension": {
+          "type": "string",
+          "required": false,
+          "description": "Custom file extension to use for images"
+        },
+        "height": {
+          "type": "string",
+          "required": false,
+          "description": "This can be a numeric value representing the fixed height in pixels. But you can also perform simple calculations by adding \"m\" or \"c\" to the value. See imgResource.width for possible options."
+        },
+        "loading": {
+          "type": "string",
+          "required": false,
+          "description": "Native lazy-loading for images property. Can be \"lazy\", \"eager\" or \"auto\". Used on image files only."
+        },
+        "width": {
+          "type": "string",
+          "required": false,
+          "description": "This can be a numeric value representing the fixed width of in pixels. But you can also perform simple calculations by adding \"m\" or \"c\" to the value. See imgResource.width for possible options."
+        }
+      }
+    },
+    "f:merge": {
+      "description": "The MergeViewHelper merges two arrays into one, optionally recursively.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Merge.html",
+      "arguments": {
+        "array": {
+          "type": "array",
+          "required": false,
+          "description": "The array to merge into"
+        },
+        "recursive": {
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to merge arrays recursively",
+          "default": "false"
+        },
+        "with": {
+          "type": "array",
+          "required": false,
+          "description": "Array to be merged"
+        }
+      }
+    },
+    "f:min": {
+      "description": "The MinViewHelper returns the minimum element from an array.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Min.html",
+      "arguments": {
+        "value": {
+          "type": "array",
+          "required": false,
+          "description": "An array"
+        }
+      }
+    },
+    "f:or": {
+      "description": "Or ViewHelper",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Or.html",
+      "arguments": {
+        "alternative": {
+          "type": "mixed",
+          "required": false,
+          "description": "Alternative if content is null"
+        },
+        "arguments": {
+          "type": "array",
+          "required": false,
+          "description": "Arguments to be replaced in the resulting string, using sprintf"
+        },
+        "content": {
+          "type": "mixed",
+          "required": false,
+          "description": "Content to check if null"
+        }
+      }
+    },
+    "f:page.footerData": {
+      "description": "The <f:page.footerData> ViewHelper allows injecting arbitrary content right before the closing </body> tag of a rendered page.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Page/FooterData.html",
+      "arguments": {}
+    },
+    "f:page.headerData": {
+      "description": "The <f:page.headerData> ViewHelper allows injecting arbitrary content into the HTML <head> of a rendered page.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Page/HeaderData.html",
+      "arguments": {}
+    },
+    "f:page.meta": {
+      "description": "The Fluid ViewHelper <f:page.meta> allows meta tags to be defined directly within Fluid templates by leveraging TYPO3's MetaTagManager API.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Page/Meta.html",
+      "arguments": {
+        "property": {
+          "type": "string",
+          "required": true,
+          "description": "The meta property name (e.g. \"description\", \"og:title\")"
+        },
+        "replace": {
+          "type": "bool",
+          "required": false,
+          "description": "Replace existing meta tags with the same property",
+          "default": "false"
+        },
+        "subProperties": {
+          "type": "array",
+          "required": false,
+          "description": "Array of sub-properties for complex meta tags (e.g. og:image width/height)",
+          "default": "array ( )"
+        },
+        "type": {
+          "type": "string",
+          "required": false,
+          "description": "The meta type attribute (name, property, http-equiv). If not set, the appropriate manager will determine the type.",
+          "values": [
+            "name",
+            "property",
+            "http-equiv"
+          ]
+        }
+      }
+    },
+    "f:page.title": {
+      "description": "The ViewHelper allows setting the page title directly from Fluid templates.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Page/Title.html",
+      "arguments": {}
+    },
+    "f:range": {
+      "description": "The RangeViewHelper returns an array containing a range of integers.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Range.html",
+      "arguments": {
+        "end": {
+          "type": "integer",
+          "required": true,
+          "description": "Last possible value of the sequence."
+        },
+        "start": {
+          "type": "integer",
+          "required": true,
+          "description": "First value of the sequence."
+        },
+        "step": {
+          "type": "integer",
+          "required": false,
+          "description": "indicates by how much the produced sequence is progressed between values of the sequence.",
+          "default": "1"
+        }
+      }
+    },
+    "f:render": {
+      "description": "A ViewHelper to render a section, a partial, a specified section in a partial or a delegate ParsedTemplateInterface implementation.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Render.html",
+      "arguments": {
+        "arguments": {
+          "type": "array",
+          "required": false,
+          "description": "Array of variables to be transferred. Use {_all} for all variables",
+          "default": "array ( )"
+        },
+        "contentAs": {
+          "type": "string",
+          "required": false,
+          "description": "If used, renders the child content and adds it as a template variable with this name for use in the partial/section"
+        },
+        "debug": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the admin panel shows debug information if activated,",
+          "default": "true"
+        },
+        "default": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value (usually string) to be displayed if the section or partial does not exist"
+        },
+        "delegate": {
+          "type": "string",
+          "required": false,
+          "description": "Optional PHP class name of a permanent, included-in-app ParsedTemplateInterface implementation to override partial/section"
+        },
+        "optional": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, considers the *section* optional. Partial never is.",
+          "default": "false"
+        },
+        "partial": {
+          "type": "string",
+          "required": false,
+          "description": "Partial to render, with or without section"
+        },
+        "section": {
+          "type": "string",
+          "required": false,
+          "description": "Section to render - combine with partial to render section in partial"
+        }
+      }
+    },
+    "f:render.contentArea": {
+      "description": "This ViewHelper can be used to render a content area provided by the page-content data processor.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Render/ContentArea.html",
+      "arguments": {
+        "contentArea": {
+          "type": "TYPO3\\CMS\\Core\\Page\\ContentArea",
+          "required": false,
+          "description": "A content area from the page-content processor"
+        },
+        "recordAs": {
+          "type": "string",
+          "required": false,
+          "description": "Name of the variable to store the current record in, if you want to use it in the before/after content."
+        }
+      }
+    },
+    "f:render.record": {
+      "description": "This ViewHelper renders a record object via its TypoScript definition. The most common use case is rendering a content element that is available as a record object in a Fluid template.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Render/Record.html",
+      "arguments": {
+        "record": {
+          "type": "TYPO3\\CMS\\Core\\Domain\\RecordInterface",
+          "required": false,
+          "description": "The record to be rendered"
+        }
+      }
+    },
+    "f:render.text": {
+      "description": "ViewHelper to render content based on records and fields from a TCA schema. Handles the processing of both simple and rich text fields. By default, accessing a missing field raises an error. Set optional to true to return null instead.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Render/Text.html",
+      "arguments": {
+        "field": {
+          "type": "string",
+          "required": true,
+          "description": "The database field that should be rendered (even if extbase model is used)."
+        },
+        "optional": {
+          "type": "boolean",
+          "required": false,
+          "description": "If the provided field does not exist in the record, null will be returned.",
+          "default": "false"
+        },
+        "record": {
+          "type": "TYPO3\\CMS\\Frontend\\Page\\PageInformation|TYPO3\\CMS\\Core\\Domain\\RecordInterface|TYPO3\\CMS\\Extbase\\DomainObject\\DomainObjectInterface",
+          "required": false,
+          "description": "A Record API Object or extbase model"
+        }
+      }
+    },
+    "f:replace": {
+      "description": "The ReplaceViewHelper replaces one or multiple strings with other strings. This ViewHelper mimicks PHP's str_replace() function. However, it's also possible to provide replace pairs as associative array via the \"replace\" argument.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Replace.html",
+      "arguments": {
+        "replace": {
+          "type": "mixed",
+          "required": true,
+          "description": ""
+        },
+        "search": {
+          "type": "mixed",
+          "required": false,
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "f:resource": {
+      "description": "ViewHelper for creating system resource objects.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Resource.html",
+      "arguments": {
+        "identifier": {
+          "type": "string",
+          "required": false,
+          "description": "The resource identifier given as argument or child"
+        }
+      }
+    },
+    "f:round": {
+      "description": "The RoundViewHelper rounds a float value with the specified precision and rounding mode. The ViewHelper mimics PHP's round() function.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Round.html",
+      "arguments": {
+        "precision": {
+          "type": "int",
+          "required": false,
+          "description": "Rounding precision",
+          "default": "2"
+        },
+        "roundingMode": {
+          "type": "string",
+          "required": false,
+          "description": "Rounding mode",
+          "default": "'HalfAwayFromZero'"
+        },
+        "value": {
+          "type": "float",
+          "required": false,
+          "description": "The number that should be rounded"
+        }
+      }
+    },
+    "f:sanitize.html": {
+      "description": "ViewHelper to pass a given content through typo3/html-sanitizer to mitigate potential cross-site scripting occurrences. The build option by default uses the class TYPO3\\CMS\\Core\\Html\\DefaultSanitizerBuilder, which declares allowed HTML tags, attributes and their values.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Sanitize/Html.html",
+      "arguments": {
+        "build": {
+          "type": "string",
+          "required": false,
+          "description": "preset name or class-like name of sanitization builder",
+          "default": "'default'"
+        }
+      }
+    },
+    "f:section": {
+      "description": "A ViewHelper to declare sections in templates for later use with e.g. the f:render ViewHelper.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Section.html",
+      "arguments": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "description": "Name of the section"
+        }
+      }
+    },
+    "f:security.ifAuthenticated": {
+      "description": "ViewHelper implementing an ifAuthenticated/else condition for frontend users.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Security/IfAuthenticated.html",
+      "arguments": {
+        "else": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if not met."
+        },
+        "then": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if met."
+        }
+      }
+    },
+    "f:security.ifHasRole": {
+      "description": "ViewHelper implementing an ifHasRole/else condition for frontend groups.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Security/IfHasRole.html",
+      "arguments": {
+        "else": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if not met."
+        },
+        "role": {
+          "type": "string",
+          "required": false,
+          "description": "The usergroup (either the usergroup uid or its title)."
+        },
+        "then": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if met."
+        }
+      }
+    },
+    "f:security.nonce": {
+      "description": "The {f:security.nonce()} ViewHelper generates a CSP (Content Security Policy) nonce and registers it for inclusion in the CSP header.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Security/Nonce.html",
+      "arguments": {
+        "directive": {
+          "type": "string",
+          "required": false,
+          "description": "Value of the CSP directive"
+        },
+        "scope": {
+          "type": "string",
+          "required": false,
+          "description": "`inline` or `static`",
+          "default": "'inline'"
+        }
+      }
+    },
+    "f:shuffle": {
+      "description": "The ShuffleViewHelper shuffles elements from an array. This ViewHelper uses PHP's shuffle() function.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Shuffle.html",
+      "arguments": {
+        "value": {
+          "type": "array",
+          "required": false,
+          "description": "An array"
+        }
+      }
+    },
+    "f:slot": {
+      "description": "f:slot allows a template that is called as a component to access and render the child content of the calling component tag. This makes nesting of components possible.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Slot.html",
+      "arguments": {
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Name of the slot, can be omitted for default slot",
+          "default": "'default'"
+        }
+      }
+    },
+    "f:spaceless": {
+      "description": "Space Removal ViewHelper",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Spaceless.html",
+      "arguments": {}
+    },
+    "f:split": {
+      "description": "The SplitViewHelper splits a string by the specified separator, which results in an array. The number of values in the resulting array can be limited with the limit parameter, which results in an array where the last item contains the remaining unsplit string.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Split.html",
+      "arguments": {
+        "limit": {
+          "type": "int",
+          "required": false,
+          "description": "If limit is positive, a maximum of $limit items will be returned. If limit is negative, all items except for the last $limit items will be returned. 0 will be treated as 1.",
+          "default": "9223372036854775807"
+        },
+        "separator": {
+          "type": "string",
+          "required": true,
+          "description": "Separator string to explode with"
+        },
+        "value": {
+          "type": "string",
+          "required": false,
+          "description": "The string to explode"
+        }
+      }
+    },
+    "f:startsWith": {
+      "description": "StartsWith ViewHelper checks if the subject string starts with a specified string. This ViewHelper implements an if/else condition.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/StartsWith.html",
+      "arguments": {
+        "else": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if not met."
+        },
+        "search": {
+          "type": "string",
+          "required": true,
+          "description": "String to search in subject at the beginning"
+        },
+        "subject": {
+          "type": "string",
+          "required": true,
+          "description": "String to search in"
+        },
+        "then": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to be returned if the condition if met."
+        }
+      }
+    },
+    "f:switch": {
+      "description": "Switch ViewHelper which can be used to render content depending on a value or expression. Implements what a basic PHP switch() does.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Switch.html",
+      "arguments": {
+        "expression": {
+          "type": "mixed",
+          "required": true,
+          "description": "Expression to switch"
+        }
+      }
+    },
+    "f:then": {
+      "description": "f:then only has an effect inside of f:if. See the f:if ViewHelper for documentation.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Then.html",
+      "arguments": {}
+    },
+    "f:transform.html": {
+      "description": "ViewHelper to transform HTML and substitute internal link scheme aspects.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Transform/Html.html",
+      "arguments": {
+        "onFailure": {
+          "type": "string",
+          "required": false,
+          "description": "behavior on failure, either `removeTag`, `removeAttr`, `removeEnclosure` or `null`",
+          "default": "'removeEnclosure'"
+        },
+        "selector": {
+          "type": "string",
+          "required": false,
+          "description": "comma separated list of node attributes to be considered",
+          "default": "'a.href'"
+        }
+      }
+    },
+    "f:translate": {
+      "description": "ViewHelper to provide a translation for language keys (\"locallang\"/\"LLL\"). By default, the files are loaded from the folder Resources/Private/Language/.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Translate.html",
+      "arguments": {
+        "arguments": {
+          "type": "array",
+          "required": false,
+          "description": "Arguments to be replaced in the resulting string"
+        },
+        "default": {
+          "type": "string",
+          "required": false,
+          "description": "If the given locallang key could not be found, this value is used. If this argument is not set, child nodes will be used to render the default"
+        },
+        "domain": {
+          "type": "string",
+          "required": false,
+          "description": "Translation Domain to be used for the ID/Key. Takes precedence over \"extensionName\". Should also be used over \"extensionName\"."
+        },
+        "extensionName": {
+          "type": "string",
+          "required": false,
+          "description": "UpperCamelCased extension key (for example BlogExample)"
+        },
+        "id": {
+          "type": "string",
+          "required": false,
+          "description": "Translation ID. Same as key."
+        },
+        "key": {
+          "type": "string",
+          "required": false,
+          "description": "Translation Key"
+        },
+        "languageKey": {
+          "type": "string",
+          "required": false,
+          "description": "Language key (\"da\" for example) or \"en\" to use. Also a Locale object is possible. If empty, use current locale from the request."
+        }
+      }
+    },
+    "f:uri.action": {
+      "description": "ViewHelper for creating URIs to Extbase actions (within Controllers). Tailored for Extbase plugins, uses Extbase Request and Extbase UriBuilder.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Uri/Action.html",
+      "arguments": {
+        "absolute": {
+          "type": "bool",
+          "required": false,
+          "description": "If set, the URI of the rendered link is absolute",
+          "default": "false"
+        },
+        "action": {
+          "type": "string",
+          "required": false,
+          "description": "Target action"
+        },
+        "addQueryString": {
+          "type": "string",
+          "required": false,
+          "description": "If set, the current query parameters will be kept in the URL. If set to \"untrusted\", then ALL query parameters will be added. Be aware, that this might lead to problems when the generated link is cached.",
+          "default": "false"
+        },
+        "additionalParams": {
+          "type": "array",
+          "required": false,
+          "description": "Additional query parameters that won't be prefixed like $arguments (overrule $arguments)",
+          "default": "array ( )"
+        },
+        "arguments": {
+          "type": "array",
+          "required": false,
+          "description": "Arguments for the controller action, associative array (do not use reserved keywords \"action\", \"controller\" or \"format\" if not referring to these internal variables specifically)",
+          "default": "array ( )"
+        },
+        "argumentsToBeExcludedFromQueryString": {
+          "type": "array",
+          "required": false,
+          "description": "Arguments to be removed from the URI. Only active if $addQueryString = true",
+          "default": "array ( )"
+        },
+        "controller": {
+          "type": "string",
+          "required": false,
+          "description": "Target controller. If NULL current controllerName is used"
+        },
+        "extensionName": {
+          "type": "string",
+          "required": false,
+          "description": "Target Extension Name (without `tx_` prefix and no underscores). If NULL the current extension name is used"
+        },
+        "format": {
+          "type": "string",
+          "required": false,
+          "description": "The requested format, e.g. \".html",
+          "default": "''"
+        },
+        "language": {
+          "type": "string",
+          "required": false,
+          "description": "link to a specific language - defaults to the current language, use a language ID or \"current\" to enforce a specific language"
+        },
+        "linkAccessRestrictedPages": {
+          "type": "bool",
+          "required": false,
+          "description": "If set, links pointing to access restricted pages will still link to the page even though the page cannot be accessed.",
+          "default": "false"
+        },
+        "noCache": {
+          "type": "bool",
+          "required": false,
+          "description": "Set this to disable caching for the target page. You should not need this."
+        },
+        "pageType": {
+          "type": "int",
+          "required": false,
+          "description": "Type of the target page. See typolink.parameter",
+          "default": "0"
+        },
+        "pageUid": {
+          "type": "int",
+          "required": false,
+          "description": "Target page. See TypoLink destination"
+        },
+        "pluginName": {
+          "type": "string",
+          "required": false,
+          "description": "Target plugin. If empty, the current plugin name is used"
+        },
+        "section": {
+          "type": "string",
+          "required": false,
+          "description": "The anchor to be added to the URI",
+          "default": "''"
+        }
+      }
+    },
+    "f:uri.external": {
+      "description": "ViewHelper for creating URIs to external targets, enforcing a specific scheme (https by default). The specified URI is passed through without further resolving or transformation.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Uri/External.html",
+      "arguments": {
+        "defaultScheme": {
+          "type": "string",
+          "required": false,
+          "description": "scheme the href attribute will be prefixed with if specified $uri does not contain a scheme already",
+          "default": "'https'"
+        },
+        "uri": {
+          "type": "string",
+          "required": true,
+          "description": "target URI"
+        }
+      }
+    },
+    "f:uri.image": {
+      "description": "ViewHelper to resize, crop or convert a given image (if required) and return the URL to this processed file.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Uri/Image.html",
+      "arguments": {
+        "absolute": {
+          "type": "bool",
+          "required": false,
+          "description": "Force absolute URL",
+          "default": "false"
+        },
+        "base64": {
+          "type": "bool",
+          "required": false,
+          "description": "Return a base64 encoded version of the image",
+          "default": "false"
+        },
+        "crop": {
+          "type": "string|bool|array",
+          "required": false,
+          "description": "overrule cropping of image (setting to FALSE disables the cropping set in FileReference)"
+        },
+        "cropVariant": {
+          "type": "string",
+          "required": false,
+          "description": "select a cropping variant, in case multiple croppings have been specified or stored in FileReference",
+          "default": "'default'"
+        },
+        "fileExtension": {
+          "type": "string",
+          "required": false,
+          "description": "Custom file extension to use"
+        },
+        "height": {
+          "type": "string",
+          "required": false,
+          "description": "height of the image. This can be a numeric value representing the fixed height of the image in pixels. But you can also perform simple calculations by adding \"m\" or \"c\" to the value. See imgResource.width for possible options."
+        },
+        "image": {
+          "type": "object",
+          "required": false,
+          "description": "image"
+        },
+        "maxHeight": {
+          "type": "int",
+          "required": false,
+          "description": "maximum height of the image"
+        },
+        "maxWidth": {
+          "type": "int",
+          "required": false,
+          "description": "maximum width of the image"
+        },
+        "minHeight": {
+          "type": "int",
+          "required": false,
+          "description": "minimum height of the image"
+        },
+        "minWidth": {
+          "type": "int",
+          "required": false,
+          "description": "minimum width of the image"
+        },
+        "src": {
+          "type": "string",
+          "required": false,
+          "description": "src",
+          "default": "''"
+        },
+        "treatIdAsReference": {
+          "type": "bool",
+          "required": false,
+          "description": "given src argument is a sys_file_reference record",
+          "default": "false"
+        },
+        "width": {
+          "type": "string",
+          "required": false,
+          "description": "width of the image. This can be a numeric value representing the fixed width of the image in pixels. But you can also perform simple calculations by adding \"m\" or \"c\" to the value. See imgResource.width for possible options."
+        }
+      }
+    },
+    "f:uri.page": {
+      "description": "ViewHelper for creating URIs to TYPO3 pages.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Uri/Page.html",
+      "arguments": {
+        "absolute": {
+          "type": "bool",
+          "required": false,
+          "description": "If set, the URI of the rendered link is absolute",
+          "default": "false"
+        },
+        "addQueryString": {
+          "type": "string",
+          "required": false,
+          "description": "If set, the current query parameters will be kept in the URL. If set to \"untrusted\", then ALL query parameters will be added. Be aware, that this might lead to problems when the generated link is cached.",
+          "default": "false"
+        },
+        "additionalParams": {
+          "type": "array",
+          "required": false,
+          "description": "query parameters to be attached to the resulting URI",
+          "default": "array ( )"
+        },
+        "argumentsToBeExcludedFromQueryString": {
+          "type": "array",
+          "required": false,
+          "description": "arguments to be removed from the URI. Only active if $addQueryString = TRUE",
+          "default": "array ( )"
+        },
+        "language": {
+          "type": "string",
+          "required": false,
+          "description": "link to a specific language - defaults to the current language, use a language ID or \"current\" to enforce a specific language"
+        },
+        "linkAccessRestrictedPages": {
+          "type": "bool",
+          "required": false,
+          "description": "If set, links pointing to access restricted pages will still link to the page even though the page cannot be accessed.",
+          "default": "false"
+        },
+        "noCache": {
+          "type": "bool",
+          "required": false,
+          "description": "set this to disable caching for the target page. You should not need this.",
+          "default": "false"
+        },
+        "pageType": {
+          "type": "int",
+          "required": false,
+          "description": "type of the target page. See typolink.parameter",
+          "default": "0"
+        },
+        "pageUid": {
+          "type": "int",
+          "required": false,
+          "description": "target PID"
+        },
+        "section": {
+          "type": "string",
+          "required": false,
+          "description": "the anchor to be added to the URI",
+          "default": "''"
+        }
+      }
+    },
+    "f:uri.resource": {
+      "description": "ViewHelper for creating URIs to resources (assets).",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Uri/Resource.html",
+      "arguments": {
+        "absolute": {
+          "type": "bool",
+          "required": false,
+          "description": "If set, an absolute URI is rendered",
+          "default": "false"
+        },
+        "extensionName": {
+          "type": "string",
+          "required": false,
+          "description": "Target extension name. If not set, the current extension name will be used"
+        },
+        "path": {
+          "type": "string",
+          "required": false,
+          "description": "The path and filename of the resource (relative to Public resource directory of the extension)."
+        },
+        "resource": {
+          "type": "object",
+          "required": false,
+          "description": "The resource object given as argument or child"
+        },
+        "useCacheBusting": {
+          "type": "bool",
+          "required": false,
+          "description": "If set, the URI is rendered with a cache buster",
+          "default": "true"
+        }
+      }
+    },
+    "f:uri.typolink": {
+      "description": "ViewHelper to create URIs from fields supported by the link wizard.",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Uri/Typolink.html",
+      "arguments": {
+        "absolute": {
+          "type": "bool",
+          "required": false,
+          "description": "Ensure the resulting URL is an absolute URL",
+          "default": "false"
+        },
+        "addQueryString": {
+          "type": "string",
+          "required": false,
+          "description": "If set, the current query parameters will be kept in the URL. If set to \"untrusted\", then ALL query parameters will be added. Be aware, that this might lead to problems when the generated link is cached.",
+          "default": "false"
+        },
+        "addQueryStringExclude": {
+          "type": "string",
+          "required": false,
+          "description": "Define parameters to be excluded from the query string (only active if addQueryString is set)",
+          "default": "''"
+        },
+        "additionalParams": {
+          "type": "string",
+          "required": false,
+          "description": "stdWrap.typolink additionalParams",
+          "default": "''"
+        },
+        "language": {
+          "type": "string",
+          "required": false,
+          "description": "link to a specific language - defaults to the current language, use a language ID or \"current\" to enforce a specific language"
+        },
+        "parameter": {
+          "type": "mixed",
+          "required": true,
+          "description": "stdWrap.typolink style parameter string"
+        }
+      }
+    },
+    "f:variable": {
+      "description": "Variable assigning ViewHelper",
+      "documentation": "https://docs.typo3.org/other/typo3/view-helper-reference/14.3/en-us/Global/Variable.html",
+      "arguments": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "description": "Name of variable to create"
+        },
+        "value": {
+          "type": "mixed",
+          "required": false,
+          "description": "Value to assign. If not in arguments then taken from tag content"
+        }
+      }
+    }
+  }
+}

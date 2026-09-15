@@ -1,34 +1,36 @@
 {
-    "name": "typo3-fluid-snippets",
-    "displayName": "TYPO3 Fluid Snippets",
-    "description": "A collection of snippets for the TYPO3 Fluid syntax",
+    "name": "vscode-typo3-fluid-intellisense",
+    "displayName": "TYPO3 Fluid Intellisense",
+    "description": "TYPO3 14.3 Fluid ViewHelper completions, argument suggestions, hover documentation and snippets",
+    "main": "./out/src/extension.js",
+    "activationEvents": ["onLanguage:html", "onLanguage:fluid", "onLanguage:typo3-fluid"],
     "icon": "images/icon.png",
-    "version": "0.3.1",
+    "version": "1.0.0",
     "preview": true,
-    "publisher": "febley",
+    "publisher": "Xyelv",
     "galleryBanner": {
         "color": "#000000",
         "theme": "dark"
     },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/febLey/vscode-typo3-fluid-snippets/issues",
-        "email": "smcbreen@microsoft.com"
+        "url": "https://github.com/Xyelv/vscode-typo3-fluid-intellisense/issues"
     },
-    "homepage": "https://github.com/febLey/vscode-typo3-fluid-snippets",
+    "homepage": "https://github.com/Xyelv/vscode-typo3-fluid-intellisense",
     "repository": {
         "type": "git",
-        "url": "https://github.com/febLey/vscode-typo3-fluid-snippets.git"
+        "url": "https://github.com/Xyelv/vscode-typo3-fluid-intellisense.git"
     },
     "categories": [
-        "Snippets"
+        "Snippets",
+        "Programming Languages"
     ],
     "keywords": [
         "typo3",
         "fluid"
     ],
     "engines": {
-        "vscode": "^1.0.0"
+        "vscode": "^1.85.0"
     },
     "contributes": {
         "snippets": [
@@ -38,7 +40,16 @@
             }
         ]
     },
+    "scripts": {
+        "compile": "tsc -p .",
+        "watch": "tsc -watch -p .",
+        "vscode:prepublish": "npm run compile",
+        "test": "npm run compile && node --test",
+        "update:viewhelpers": "node scripts/update-viewhelpers.mjs"
+    },
     "devDependencies": {
-        "vscode": "^1.0.0"
+        "@types/vscode": "1.85.0",
+        "cheerio": "1.0.0",
+        "typescript": "~5.7.3"
     }
 }

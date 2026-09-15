@@ -16,23 +16,9 @@
   "f:alias Inline": {
     "prefix": "fAliasInline",
     "body": [
-      "{f:alias(map: {$1: $2})}"
+      "{'${1:content}' -> f:alias(map: {${2:alias}: ${3:variable}})}"
     ],
-    "description": "TYPO3 Fluid Inline | {f:alias(})}"
-  },
-  "f:base": {
-    "prefix": "fBase",
-    "body": [
-      "<f:base />"
-    ],
-    "description": "TYPO3 Fluid | <f:base>"
-  },
-  "f:base Inline": {
-    "prefix": "fBaseInline",
-    "body": [
-      "{f:base()}"
-    ],
-    "description": "TYPO3 Fluid Inline | {f:base()}"
+    "description": "TYPO3 Fluid Inline | {f:alias()}"
   },
   "f:cache.disable": {
     "prefix": "fCacheDisable",
@@ -58,23 +44,9 @@
   "f:cache.static Inline": {
     "prefix": "fCacheStaticInline",
     "body": [
-      "{f:cache.static(value: '$1')}"
+      "{'${1:content}' -> f:cache.static()}"
     ],
     "description": "TYPO3 Fluid Inline | {f:cache.static()}"
-  },
-  "f:cache.warmup": {
-    "prefix": "fCacheWarmup",
-    "body": [
-      "<f:cache.warmup variables=\"{$1: $2}\"></f:cache.warmup"
-    ],
-    "description": "TYPO3 Fluid Inline | <f:cache.warmup>"
-  },
-  "f:cache.warmup Inline": {
-    "prefix": "fCacheWarmupInline",
-    "body": [
-      "{f:cache.warmup(variables: '{$1: $2}')}"
-    ],
-    "description": "TYPO3 Fluid Inline | {f:cache.warmup()}"
   },
   "f:cObject": {
     "prefix": "fCobject",
@@ -100,7 +72,7 @@
   "f:comment Inline": {
     "prefix": "fCommentInline",
     "body": [
-      "{f:comment('$1')}"
+      "{'${1:comment}' -> f:comment()}"
     ],
     "description": "TYPO3 Fluid Inline | {f:comment()}"
   },
@@ -122,7 +94,7 @@
     "prefix": "fCycle",
     "body": [
       "<f:cycle values=\"{$1}\" as=\"$2\">",
-      "\t{$3}",
+      "\t{$2}",
       "</f:cycle>"
     ],
     "description": "TYPO3 Fluid | <f:cycle>"
@@ -130,17 +102,17 @@
   "f:cycle Inline": {
     "prefix": "fCycleInline",
     "body": [
-      "{f:cycle(values: '$1', as: '$2')}"
+      "{'${3:content}' -> f:cycle(values: ${1:items}, as: '${2:item}')}"
     ],
-    "description": "TYPO3 Fluid inline | {f:cycle()}"
+    "description": "TYPO3 Fluid Inline | {f:cycle()}"
   },
-	"f:debug Extended": {
-		"prefix": "fDebugExt",
-		"body": [
-			"<f:debug${1: title=\"$2\"}${3: inline=\"$4\"}${5: ansiColors=\"$6\"}${7: maxDepth=\"$8\"}${9: plainText=\"$10\"}>$11</f:debug>"
-		],
-		"description": "TYPO3 Fluid | <f:debug> (extended)"
-	},
+  "f:debug Extended": {
+    "prefix": "fDebugExt",
+    "body": [
+      "<f:debug${1: title=\"$2\"}${3: inline=\"$4\"}${5: ansiColors=\"$6\"}${7: maxDepth=\"$8\"}${9: plainText=\"$10\"}>$11</f:debug>"
+    ],
+    "description": "TYPO3 Fluid | <f:debug> (extended)"
+  },
   "f:debug": {
     "prefix": "fDebug",
     "body": [
@@ -151,23 +123,23 @@
   "f:debug Inline": {
     "prefix": "fDebugInline",
     "body": [
-      "{f:debug(title: '$1'${2:, inline: '$3'})}"
+      "{${1:variable} -> f:debug(title: '${2:Debug}'${3:, inline: 1})}"
     ],
     "description": "TYPO3 Fluid Inline | {f:debug()}"
   },
   "f:flashMessages": {
     "prefix": "fFlashmessages",
     "body": [
-      "<f:flashMessages class=\"flashMessage\" />"
+      "<f:flashMessages />"
     ],
     "description": "TYPO3 Fluid | <f:flashMessages>"
   },
   "f:flashMessages Inline": {
     "prefix": "fFlashmessagesInline",
     "body": [
-      "{f:flashMessages(class:'flashMessage')}"
+      "{f:flashMessages()}"
     ],
-    "description": "TYPO3 Fluid Inline | {f:flashMessages()"
+    "description": "TYPO3 Fluid Inline | {f:flashMessages()}"
   },
   "f:for": {
     "prefix": "fFor",
@@ -181,7 +153,7 @@
   "f:for Inline": {
     "prefix": "fForInline",
     "body": [
-      "{f:for(each: '{$1}', as: '$2', iteration: 'i')}"
+      "{'${3:content}' -> f:for(each: ${1:items}, as: '${2:item}', iteration: 'i')}"
     ],
     "description": "TYPO3 Fluid Inline | {f:for()}"
   },
@@ -204,7 +176,7 @@
   "f:form.checkbox": {
     "prefix": "fFormCheckbox",
     "body": [
-      "<f:form.checkbox name=\"$1\" value=\"$2\"${3: checked=\"checked\"} />"
+      "<f:form.checkbox name=\"$1\" value=\"$2\"${3: checked=\"1\"} />"
     ],
     "description": "TYPO3 Fluid | <f:form.checkbox>"
   },
@@ -225,7 +197,7 @@
   "f:form.radio": {
     "prefix": "fFormRadio",
     "body": [
-      "<f:form.radio name=\"$1\" value=\"$2\"${3: checked=\"checked\"} />"
+      "<f:form.radio name=\"$1\" value=\"$2\"${3: checked=\"1\"} />"
     ],
     "description": "TYPO3 Fluid | <f:form.radio>"
   },
@@ -267,21 +239,21 @@
   "f:format.bytes Inline": {
     "prefix": "fFormatBytesInline",
     "body": [
-      "{f:format.bytes(value: $1, decimals: $2${3:, decimalSeparator: ''${4:.}''},${5: thousandsSeparator: ''${6:,}''})}"
+      "{f:format.bytes(value: ${1:bytes}, decimals: ${2:0}${3:, decimalSeparator: '${4:.}'}${5:, thousandsSeparator: '${6:,}'})}"
     ],
     "description": "TYPO3 Fluid Inline | {f:format.bytes()}"
   },
   "f:format.case": {
     "prefix": "fFormatCase",
     "body": [
-      "<f:format.case mode=\"${1|lower,upper,captial,uncapital,capitalWords|}\">$2</f:format.case>"
+      "<f:format.case mode=\"${1|lower,upper,capital,uncapital,capitalWords|}\">$2</f:format.case>"
     ],
     "description": "TYPO3 Fluid | <f:format.case>"
   },
   "f:format.case Inline": {
     "prefix": "fFormatCaseInline",
     "body": [
-      "{f:format.case(mode: '${1|lower,upper,captial,uncapital,capitalWords|}', value: '$2')}"
+      "{f:format.case(mode: '${1|lower,upper,capital,uncapital,capitalWords|}', value: '$2')}"
     ],
     "description": "TYPO3 Fluid Inline | {f:format.case()}"
   },
@@ -332,7 +304,7 @@
     "body": [
       "{f:format.date(date: '$1', format: '$2')}"
     ],
-    "description": "TYPO3 Fluid | {f:format.date()}"
+    "description": "TYPO3 Fluid Inline | {f:format.date()}"
   },
   "f:format.html": {
     "prefix": "fFormatHtml",
@@ -388,14 +360,14 @@
     "body": [
       "{f:format.nl2br(value: '$1')}"
     ],
-    "description": "TYPO3 Fluid inline | {f:format.nl2br()}"
+    "description": "TYPO3 Fluid Inline | {f:format.nl2br()}"
   },
   "f:format.number": {
     "prefix": "fFormatNumber",
     "body": [
       "<f:format.number decimals=\"$1\"${2: decimalSeparator=\"${3:.}\"}${4: thousandsSeparator=\"${5:,}\"}>$6</f:format.number>"
     ],
-    "description": "TYPO3 Fluid inline | <f:format.number>"
+    "description": "TYPO3 Fluid | <f:format.number>"
   },
   "f:format.number Inline": {
     "prefix": "fFormatNumberInline",
@@ -414,7 +386,7 @@
   "f:format.printf Inline": {
     "prefix": "fFormatPrintfInline",
     "body": [
-      "{f:format.printf(value: '$1', arguments: '$2')}"
+      "{f:format.printf(value: '${1:%s}', arguments: ${2:arguments})}"
     ],
     "description": "TYPO3 Fluid Inline | {f:format.printf()}"
   },
@@ -471,12 +443,12 @@
     ],
     "description": "TYPO3 Fluid | <f:groupedFor>"
   },
-  "f:groupFor Inline": {
+  "f:groupedFor Inline": {
     "prefix": "fGroupForInline",
     "body": [
-      "{f:groupedFor(each: {$1}, as: '$2', groupBy: '$3', groupKey: '${4:key}')}"
+      "{'${5:content}' -> f:groupedFor(each: ${1:items}, as: '${2:group}', groupBy: '${3:property}', groupKey: '${4:key}')}"
     ],
-    "description": "TYPO3 Fluid inline | {f:groupedFor()}"
+    "description": "TYPO3 Fluid Inline | {f:groupedFor()}"
   },
   "f:if": {
     "prefix": "fIf",
@@ -502,7 +474,7 @@
   "f:if Inline": {
     "prefix": "fIfInline",
     "body": [
-      "{f:if(condition: '{$1}', then: '$2'${3:, else: '$4'})}"
+      "{f:if(condition: ${1:condition}, then: '$2'${3:, else: '$4'})}"
     ],
     "description": "TYPO3 Fluid Inline | {f:if()}"
   },
@@ -518,7 +490,7 @@
     "body": [
       "{$1 -> f:inline()}"
     ],
-    "description": "TYPO3 Fluid | {f:inline()}"
+    "description": "TYPO3 Fluid | <f:inline>"
   },
   "f:layout": {
     "prefix": "fLayout",
@@ -586,7 +558,7 @@
   "f:link.page Inline": {
     "prefix": "fLinkPageInline",
     "body": [
-      "{f:link.page(uri: '$1')}"
+      "{'${2:link text}' -> f:link.page(pageUid: ${1:1})}"
     ],
     "description": "TYPO3 Fluid Inline | {f:link.page()}"
   },
@@ -607,16 +579,16 @@
   "f:render": {
     "prefix": "fRender",
     "body": [
-      "<f:render ${1:section=\"$2\" }partial=\"$3\"${4: arguments=\"{$5\\}\"} />"
+      "<f:render partial=\"${1:PartialName}\" arguments=\"{${2:variable}: ${3:value}}\" />"
     ],
     "description": "TYPO3 Fluid | <f:render>"
   },
   "f:render Inline": {
     "prefix": "fRenderInline",
     "body": [
-      "{f:render(${1:section: '$2', }partial: '$3'${4:, arguments: {$5\\}})}"
+      "{f:render(partial: '${1:PartialName}', arguments: {${2:variable}: ${3:value}})}"
     ],
-    "description": "TYPO3 Fluid | {f:render()}"
+    "description": "TYPO3 Fluid Inline | {f:render()}"
   },
   "f:spaceless": {
     "prefix": "fSpaceless",
@@ -666,23 +638,9 @@
   "f:uri.action Inline": {
     "prefix": "fUriActionInline",
     "body": [
-      "{f:uri.action(action: '$1'${2:, pageUid: '$3'}}"
+      "{f:uri.action(action: '$1'${2:, pageUid: '$3'})}"
     ],
     "description": "TYPO3 Fluid Inline | {f:uri.action()}"
-  },
-  "f:uri.email": {
-    "prefix": "fUriEmail",
-    "body": [
-      "<f:uri.email email=\"$1\" />"
-    ],
-    "description": "TYPO3 Fluid | <f:uri.email>"
-  },
-  "f:uri.email Inline": {
-    "prefix": "fUriEmailInline",
-    "body": [
-      "{f:uri.email(email: '$1')}"
-    ],
-    "description": "TYPO3 Fluid Inline | {f:uri.email()}"
   },
   "f:uri.external": {
     "prefix": "fUriExternal",
@@ -708,7 +666,7 @@
   "f:uri.image Inline": {
     "prefix": "fUriImageInline",
     "body": [
-      "{f:uri.image(src: '$1'${2:, treatIdAsReference: 1)}}"
+      "{f:uri.image(src: '$1'${2:, treatIdAsReference: 1})}"
     ],
     "description": "TYPO3 Fluid Inline | {f:uri.image()}"
   },
@@ -724,7 +682,7 @@
     "body": [
       "{f:uri.page(pageUid: $1)}"
     ],
-    "description": "TYPO3 Fluid inline | {f:uri.page()}"
+    "description": "TYPO3 Fluid Inline | {f:uri.page()}"
   },
   "f:uri.typolink": {
     "prefix": "fUriTypolink",
@@ -752,6 +710,174 @@
     "body": [
       "{f:variable(name: '$1', value: '$2')}"
     ],
-    "description": "TYPO3 Fluid inline | {f:variable()}"
+    "description": "TYPO3 Fluid Inline | {f:variable()}"
+  },
+  "f:asset.css": {
+    "prefix": "fAssetCss",
+    "body": [
+      "<f:asset.css identifier=\"${1:stylesheet}\" href=\"EXT:${2:site_package}/Resources/Public/Css/${3:style.css}\" />"
+    ],
+    "description": "TYPO3 Fluid | <f:asset.css>"
+  },
+  "f:asset.script": {
+    "prefix": "fAssetScript",
+    "body": [
+      "<f:asset.script identifier=\"${1:script}\" src=\"EXT:${2:site_package}/Resources/Public/JavaScript/${3:main.js}\" />"
+    ],
+    "description": "TYPO3 Fluid | <f:asset.script>"
+  },
+  "f:asset.module": {
+    "prefix": "fAssetModule",
+    "body": [
+      "<f:asset.module identifier=\"@${1:vendor}/${2:package}/${3:main.js}\" />"
+    ],
+    "description": "TYPO3 Fluid | <f:asset.module>"
+  },
+  "f:form.select": {
+    "prefix": "fFormSelect",
+    "body": [
+      "<f:form.select name=\"${1:selection}\" options=\"{${2:options}}\" value=\"{${3:selected}}\" />"
+    ],
+    "description": "TYPO3 Fluid | <f:form.select>"
+  },
+  "f:format.json": {
+    "prefix": "fFormatJson",
+    "body": [
+      "<f:format.json>{${1:value}}</f:format.json>"
+    ],
+    "description": "TYPO3 Fluid | <f:format.json>"
+  },
+  "f:format.json Inline": {
+    "prefix": "fFormatJsonInline",
+    "body": [
+      "{${1:value} -> f:format.json()}"
+    ],
+    "description": "TYPO3 Fluid Inline | {f:format.json()}"
+  },
+  "f:media": {
+    "prefix": "fMedia",
+    "body": [
+      "<f:media file=\"{${1:file}}\" width=\"${2:800}\" height=\"${3:450}\" />"
+    ],
+    "description": "TYPO3 Fluid | <f:media>"
+  },
+  "f:image FAL": {
+    "prefix": "fImageFal",
+    "body": [
+      "<f:image image=\"{${1:image}}\" width=\"${2:800}\" alt=\"${3:description}\" />"
+    ],
+    "description": "TYPO3 Fluid | <f:image>"
+  },
+  "f:uri.image FAL Inline": {
+    "prefix": "fUriImageFalInline",
+    "body": [
+      "{f:uri.image(image: ${1:image}, width: '${2:800}')}"
+    ],
+    "description": "TYPO3 Fluid Inline | {f:uri.image()}"
+  },
+  "f:uri.resource": {
+    "prefix": "fUriResource",
+    "body": [
+      "<f:uri.resource path=\"EXT:${1:site_package}/Resources/Public/${2:path}\" />"
+    ],
+    "description": "TYPO3 Fluid | <f:uri.resource>"
+  },
+  "f:uri.resource Inline": {
+    "prefix": "fUriResourceInline",
+    "body": [
+      "{f:uri.resource(path: 'EXT:${1:site_package}/Resources/Public/${2:path}')}"
+    ],
+    "description": "TYPO3 Fluid Inline | {f:uri.resource()}"
+  },
+  "f:render Section": {
+    "prefix": "fRenderSection",
+    "body": [
+      "<f:render section=\"${1:SectionName}\" arguments=\"{${2:variable}: ${3:value}}\" />"
+    ],
+    "description": "TYPO3 Fluid | <f:render>"
+  },
+  "f:render Section Inline": {
+    "prefix": "fRenderSectionInline",
+    "body": [
+      "{f:render(section: '${1:SectionName}', arguments: {${2:variable}: ${3:value}})}"
+    ],
+    "description": "TYPO3 Fluid Inline | {f:render()}"
+  },
+  "f:render.contentArea": {
+    "prefix": "fRenderContentArea",
+    "body": [
+      "<f:render.contentArea contentArea=\"{${1:content.main}}\" />"
+    ],
+    "description": "TYPO3 Fluid | <f:render.contentArea>"
+  },
+  "f:render.contentArea Inline": {
+    "prefix": "fRenderContentAreaInline",
+    "body": [
+      "{${1:content.main} -> f:render.contentArea()}"
+    ],
+    "description": "TYPO3 Fluid Inline | {f:render.contentArea()}"
+  },
+  "f:render.record": {
+    "prefix": "fRenderRecord",
+    "body": [
+      "<f:render.record record=\"{${1:record}}\" />"
+    ],
+    "description": "TYPO3 Fluid | <f:render.record>"
+  },
+  "f:render.record Inline": {
+    "prefix": "fRenderRecordInline",
+    "body": [
+      "{${1:record} -> f:render.record()}"
+    ],
+    "description": "TYPO3 Fluid Inline | {f:render.record()}"
+  },
+  "f:render.text": {
+    "prefix": "fRenderText",
+    "body": [
+      "<f:render.text record=\"{${1:record}}\" field=\"${2:bodytext}\" />"
+    ],
+    "description": "TYPO3 Fluid | <f:render.text>"
+  },
+  "f:render.text Inline": {
+    "prefix": "fRenderTextInline",
+    "body": [
+      "{f:render.text(record: ${1:record}, field: '${2:bodytext}')}"
+    ],
+    "description": "TYPO3 Fluid Inline | {f:render.text()}"
+  },
+  "f:page.title": {
+    "prefix": "fPageTitle",
+    "body": [
+      "<f:page.title>${1:title}</f:page.title>"
+    ],
+    "description": "TYPO3 Fluid | <f:page.title>"
+  },
+  "f:page.meta": {
+    "prefix": "fPageMeta",
+    "body": [
+      "<f:page.meta property=\"${1:description}\">${2:content}</f:page.meta>"
+    ],
+    "description": "TYPO3 Fluid | <f:page.meta>"
+  },
+  "f:page.headerData": {
+    "prefix": "fPageHeaderData",
+    "body": [
+      "<f:page.headerData>$1</f:page.headerData>"
+    ],
+    "description": "TYPO3 Fluid | <f:page.headerData>"
+  },
+  "f:page.footerData": {
+    "prefix": "fPageFooterData",
+    "body": [
+      "<f:page.footerData>$1</f:page.footerData>"
+    ],
+    "description": "TYPO3 Fluid | <f:page.footerData>"
+  },
+  "f:defaultCase": {
+    "prefix": "fDefaultCase",
+    "body": [
+      "<f:defaultCase>$1</f:defaultCase>"
+    ],
+    "description": "TYPO3 Fluid | <f:defaultCase>"
   }
 }
